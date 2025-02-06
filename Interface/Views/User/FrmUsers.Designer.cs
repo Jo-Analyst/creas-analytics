@@ -48,10 +48,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnNewUser = new System.Windows.Forms.Button();
-            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColADD = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColCpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,10 +83,10 @@
             this.dgvUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsers.ColumnHeadersHeight = 40;
             this.dgvUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColId,
             this.ColADD,
             this.ColEdit,
             this.ColDelete,
+            this.ColId,
             this.ColName,
             this.ColCpf,
             this.ColBirth,
@@ -121,6 +121,7 @@
             this.dgvUsers.Size = new System.Drawing.Size(934, 229);
             this.dgvUsers.TabIndex = 2;
             this.dgvUsers.TabStop = false;
+            this.dgvUsers.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellMouseEnter);
             // 
             // panel1
             // 
@@ -168,7 +169,6 @@
             this.cbRows.Size = new System.Drawing.Size(94, 26);
             this.cbRows.TabIndex = 16;
             this.cbRows.TabStop = false;
-            this.cbRows.SelectedIndexChanged += new System.EventHandler(this.cbRows_SelectedIndexChanged);
             // 
             // cbPage
             // 
@@ -187,7 +187,6 @@
             this.cbPage.Size = new System.Drawing.Size(97, 26);
             this.cbPage.TabIndex = 15;
             this.cbPage.TabStop = false;
-            this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -294,17 +293,6 @@
             this.btnNewUser.UseVisualStyleBackColor = true;
             this.btnNewUser.Click += new System.EventHandler(this.btnNewUser_Click);
             // 
-            // ColId
-            // 
-            this.ColId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColId.HeaderText = "Id";
-            this.ColId.MinimumWidth = 6;
-            this.ColId.Name = "ColId";
-            this.ColId.ReadOnly = true;
-            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColId.Visible = false;
-            this.ColId.Width = 26;
-            // 
             // ColADD
             // 
             this.ColADD.HeaderText = "Adicionar";
@@ -323,6 +311,17 @@
             this.ColDelete.HeaderText = "Excluir";
             this.ColDelete.Name = "ColDelete";
             this.ColDelete.ReadOnly = true;
+            // 
+            // ColId
+            // 
+            this.ColId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColId.HeaderText = "Id";
+            this.ColId.MinimumWidth = 6;
+            this.ColId.Name = "ColId";
+            this.ColId.ReadOnly = true;
+            this.ColId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColId.Visible = false;
+            this.ColId.Width = 26;
             // 
             // ColName
             // 
@@ -442,10 +441,10 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ComboBox cbRows;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColId;
         private System.Windows.Forms.DataGridViewImageColumn ColADD;
         private System.Windows.Forms.DataGridViewImageColumn ColEdit;
         private System.Windows.Forms.DataGridViewImageColumn ColDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColCpf;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColBirth;

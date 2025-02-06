@@ -23,6 +23,7 @@ namespace Interface
             if (frmSaveUser.isSaved)
             {
                 FrmUsers_Load(sender, e);
+                loadEvents();
             }
         }
 
@@ -102,12 +103,15 @@ namespace Interface
         {
             cbPage.Text = "1";
             cbRows.Text = "5";
+            loadEvents();
+            this.cbRows.SelectedIndexChanged += cbRows_SelectedIndexChanged;
+            this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
         }
 
         private void CheckNumberOfPages(int numberRows)
         {
             PageData.quantityRowsSelected = numberRows;
-            pageMaximum = PageData.SetPageQuantityUsers();
+            pageMaximum = string.IsNullOrWhiteSpace(txtName.Text) ?  PageData.SetPageQuantityUsers(): PageData.SetPageQuantityUsersByName(txtName.Text);
 
             if (pageMaximum > 1)
                 EnabledBtnArrowRight();
@@ -119,7 +123,11 @@ namespace Interface
             try
             {
                 dgvUsers.Rows.Clear();
-                DataTable dtUsers = string.IsNullOrWhiteSpace(txtName.Text) ? User.FindAll(page -1, int.Parse(cbRows.Text)) : User.FindByName(txtName.Text.Trim());
+
+                int quantRows = int.Parse(cbRows.Text);
+                int pageSelected = (page - 1) * quantRows;
+
+                DataTable dtUsers = string.IsNullOrWhiteSpace(txtName.Text) ? User.FindAll(pageSelected, quantRows) : User.FindByName(txtName.Text.Trim(), pageSelected, quantRows);
                 foreach (DataRow user in dtUsers.Rows)
                 {
                     int index = dgvUsers.Rows.Add();
@@ -186,9 +194,9 @@ namespace Interface
 
         private void cbPage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (page == pageMaximum) return;
-
             page = int.Parse(cbPage.Text);
+            if (pageMaximum == 1) return;
+
             LoadUsers();
 
             if (page == 1)
@@ -210,9 +218,19 @@ namespace Interface
 
         }
 
+        private void dgvUsers_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvUsers.Cursor = e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2 ? Cursors.Hand : Cursors.Arrow;
+        }
+
         private void txtName_TextChanged(object sender, EventArgs e)
         {
-            LoadUsers();
+            loadEvents();
+            if (pageMaximum == 1)
+            {
+                DisabledBtnArrowLeft();
+                DisabledBtnArrowRight();
+            }
         }
     }
 }

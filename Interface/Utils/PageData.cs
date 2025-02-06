@@ -20,6 +20,12 @@ namespace Interface
             return CalculacalculateNumberOfPage();
         } 
         
+        static public int SetPageQuantityUsersByName(string name)
+        {
+            quantity = User.CountQuantityUsersByName(name);
+            return CalculacalculateNumberOfPage();
+        } 
+        
         //static public int SetPageQuantityServices(int personId)
         //{
         //    quantity = Service.CountQuantityServices(personId);

@@ -180,5 +180,19 @@ namespace DataBase
                 return count;
             }
         }
+        
+        public static double CountQuantityUsersByName(string name)
+        {
+            using (var connection = new SqlConnection(DbConnectionString.connectionString))
+            {
+                connection.Open();
+                string query = $"SELECT COUNT(id) FROM Users WHERE name LIKE '%{name}%'";
+                var command = new SqlCommand(query, connection);
+                command.CommandText = query;
+
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                return count;
+            }
+        }
     }
 }
