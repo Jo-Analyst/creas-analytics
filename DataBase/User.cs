@@ -166,5 +166,19 @@ namespace DataBase
                 throw;
             }
         }
+
+        public static double CountQuantityUsers()
+        {
+            using (var connection = new SqlConnection(DbConnectionString.connectionString))
+            {
+                connection.Open();
+                string query = $"SELECT COUNT(id) FROM Users";
+                var command = new SqlCommand(query, connection);
+                command.CommandText = query;
+
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                return count;
+            }
+        }
     }
 }
