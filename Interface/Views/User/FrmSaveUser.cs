@@ -8,10 +8,26 @@ namespace Interface
     {
 
         public bool isSaved {  get; set; }
-
+        int userId;
         public FrmSaveUser()
         {
             InitializeComponent();
+        }
+        
+        public FrmSaveUser(int id, string name, string cpf, string birth, string phone, string address, string numberAddress, string familyReferences)
+        {
+            InitializeComponent();
+            userId = id;
+            txtName.Text = name;
+            mkCPF.Text = cpf;
+            dtBirth.Text = birth;
+            mkPhone.Text = phone;
+            txtAddress.Text = address;
+            txtNumberAddress.Text = numberAddress;
+            txtFamilyReference.Text = familyReferences;
+            btnSave.Focus();
+            this.btnSave.TabStop = true;
+
         }
                
         private void btnSave_Click(object sender, System.EventArgs e)
@@ -33,7 +49,7 @@ namespace Interface
                         return;
                     }
 
-                    else if (User.FindByCpfForUser(mkCPF.Text).Rows.Count > 0)
+                    else if (User.FindByCpfForUser(mkCPF.Text).Rows.Count > 0 && userId == 0)
                     {
                         MessageBox.Show("Este CPF já está cadastrado", "CREAS Analytics", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
@@ -43,7 +59,7 @@ namespace Interface
 
                 new User()
                 {
-                    id = 0,
+                    id = userId,
                     name = txtName.Text.Trim(),
                     CPF = mkCPF.Text.Length == 14 ? mkCPF.Text : "",                   
                     birth = dtBirth.Text,

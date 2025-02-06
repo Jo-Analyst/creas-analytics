@@ -134,6 +134,7 @@ namespace Interface
                     dgvUsers.Rows[index].Cells["ColADD"].Value = Properties.Resources.add_post;
                     dgvUsers.Rows[index].Cells["ColEdit"].Value = Properties.Resources.user_avatar;
                     dgvUsers.Rows[index].Cells["ColDelete"].Value = Properties.Resources.delete;
+                    dgvUsers.Rows[index].Cells["ColId"].Value = user["id"].ToString();
                     dgvUsers.Rows[index].Cells["ColName"].Value = user["name"].ToString();
                     dgvUsers.Rows[index].Cells["ColCPF"].Value = user["CPF"].ToString();
                     dgvUsers.Rows[index].Cells["ColBirth"].Value = user["Birth"].ToString();
@@ -221,6 +222,29 @@ namespace Interface
         private void dgvUsers_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             dgvUsers.Cursor = e.ColumnIndex == 0 || e.ColumnIndex == 1 || e.ColumnIndex == 2 ? Cursors.Hand : Cursors.Arrow;
+        }
+
+        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1) return;
+
+            if (dgvUsers.CurrentCell.ColumnIndex == 1)
+            {
+
+                int id = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ColId"].Value);
+                string name = dgvUsers.CurrentRow.Cells["ColName"].Value.ToString();
+                string CPF = dgvUsers.CurrentRow.Cells["ColCpf"].Value.ToString();
+                string birth = dgvUsers.CurrentRow.Cells["ColBirth"].Value.ToString();
+                string address = dgvUsers.CurrentRow.Cells["ColAddress"].Value.ToString();
+                string numberAddress = dgvUsers.CurrentRow.Cells["ColNumber"].Value.ToString();
+                string phone = dgvUsers.CurrentRow.Cells["ColPhone"].Value.ToString();
+                string familyReference = dgvUsers.CurrentRow.Cells["ColFamilyReference"].Value.ToString();
+
+                FrmSaveUser frmUser = new FrmSaveUser(id, name, CPF, birth, address, numberAddress, phone, familyReference);
+                frmUser.ShowDialog();
+                if(frmUser.isSaved)
+                    loadEvents();
+            }
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

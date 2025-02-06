@@ -123,6 +123,7 @@
             this.dgvUsers.Size = new System.Drawing.Size(934, 229);
             this.dgvUsers.TabIndex = 2;
             this.dgvUsers.TabStop = false;
+            this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             this.dgvUsers.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellMouseEnter);
             // 
             // panel1

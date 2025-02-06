@@ -131,7 +131,7 @@
             this.mkCPF.Mask = "000,000,000-00";
             this.mkCPF.Name = "mkCPF";
             this.mkCPF.Size = new System.Drawing.Size(118, 26);
-            this.mkCPF.TabIndex = 1;
+            this.mkCPF.TabIndex = 2;
             // 
             // label2
             // 
@@ -151,7 +151,7 @@
             this.txtName.MaxLength = 200;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(583, 26);
-            this.txtName.TabIndex = 0;
+            this.txtName.TabIndex = 1;
             // 
             // label1
             // 
@@ -173,7 +173,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(143, 47);
-            this.btnSave.TabIndex = 54;
+            this.btnSave.TabIndex = 0;
             this.btnSave.TabStop = false;
             this.btnSave.Text = "Salvar";
             this.btnSave.UseVisualStyleBackColor = true;
