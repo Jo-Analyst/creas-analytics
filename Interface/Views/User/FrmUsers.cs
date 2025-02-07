@@ -240,7 +240,12 @@ namespace Interface
             string phone = dgvUsers.CurrentRow.Cells["ColPhone"].Value.ToString();
             string familyReference = dgvUsers.CurrentRow.Cells["ColFamilyReference"].Value.ToString();
 
-            if (dgvUsers.CurrentCell.ColumnIndex == 1)
+            if (dgvUsers.CurrentCell.ColumnIndex == 0)
+            {
+                FrmCustomerService frmCustomer = new FrmCustomerService();
+                frmCustomer.ShowDialog();
+            }
+            else if (dgvUsers.CurrentCell.ColumnIndex == 1)
             {
 
                 FrmSaveUser frmUser = new FrmSaveUser(id, name, CPF, birth, phone, address, numberAddress, familyReference);

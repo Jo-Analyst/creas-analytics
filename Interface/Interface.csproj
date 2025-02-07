@@ -79,6 +79,12 @@
     <Compile Include="Utils\PrintLocalReport.cs" />
     <Compile Include="Utils\PrintRDLC.cs" />
     <Compile Include="Utils\Security.cs" />
+    <Compile Include="Views\Customer\FrmCustomerService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\FrmCustomerService.Designer.cs">
+      <DependentUpon>FrmCustomerService.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmCreasAnalyst.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Customer\FrmCustomerService.resx">
+      <DependentUpon>FrmCustomerService.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmCreasAnalyst.resx">
       <DependentUpon>FrmCreasAnalyst.cs</DependentUpon>
     </EmbeddedResource>
