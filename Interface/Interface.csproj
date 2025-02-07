@@ -78,6 +78,7 @@
     <Compile Include="Utils\PageData.cs" />
     <Compile Include="Utils\PrintLocalReport.cs" />
     <Compile Include="Utils\PrintRDLC.cs" />
+    <Compile Include="Utils\Security.cs" />
     <Compile Include="Views\FrmCreasAnalyst.cs">
       <SubType>Form</SubType>
     </Compile>

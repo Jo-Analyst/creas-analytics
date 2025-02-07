@@ -46,7 +46,7 @@ namespace DataBase
             }
         }
 
-        public void Delete()
+        static public void Delete(int id)
         {
             using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
             {
@@ -107,13 +107,13 @@ namespace DataBase
             }
         }
 
-        static public DataTable FindByCpfForUser(string CPF)
+        static public DataTable FindByCpfForUser(string CPF, int id)
         {
             try
             {
                 using (var connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string query = $"SELECT * FROM Users WHERE CPF = '{CPF}'";
+                    string query = $"SELECT * FROM Users WHERE CPF = '{CPF}' AND id <> {id}";
                     var adapter = new SqlDataAdapter(query, connection);
                     adapter.SelectCommand.CommandText = query;
                     DataTable dataTable = new DataTable();

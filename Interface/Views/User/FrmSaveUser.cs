@@ -49,7 +49,7 @@ namespace Interface
                         return;
                     }
 
-                    else if (User.FindByCpfForUser(mkCPF.Text).Rows.Count > 0 && userId == 0)
+                    else if (User.FindByCpfForUser(Security.Cry(mkCPF.Text), userId).Rows.Count > 0)
                     {
                         MessageBox.Show("Este CPF já está cadastrado", "CREAS Analytics", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
@@ -61,11 +61,11 @@ namespace Interface
                 {
                     id = userId,
                     name = txtName.Text.Trim(),
-                    CPF = mkCPF.Text.Length == 14 ? mkCPF.Text : "",                   
+                    CPF = mkCPF.MaskCompleted ? Security.Cry(mkCPF.Text) : "",                   
                     birth = dtBirth.Text,
                     address = txtAddress.Text.Trim(),
                     numberAddress = txtNumberAddress.Text.Trim(),
-                    phone = mkPhone.Text,
+                    phone = mkPhone.MaskCompleted ? mkPhone.Text : "",
                     familyReference = txtFamilyReference.Text.Trim()
                 }.Save();
               

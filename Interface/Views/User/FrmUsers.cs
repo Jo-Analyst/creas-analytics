@@ -136,7 +136,7 @@ namespace Interface
                     dgvUsers.Rows[index].Cells["ColDelete"].Value = Properties.Resources.delete;
                     dgvUsers.Rows[index].Cells["ColId"].Value = user["id"].ToString();
                     dgvUsers.Rows[index].Cells["ColName"].Value = user["name"].ToString();
-                    dgvUsers.Rows[index].Cells["ColCPF"].Value = user["CPF"].ToString();
+                    dgvUsers.Rows[index].Cells["ColCPF"].Value = string.IsNullOrEmpty(user["CPF"].ToString()) ? "" : Security.Dry(user["CPF"].ToString());
                     dgvUsers.Rows[index].Cells["ColBirth"].Value = user["Birth"].ToString();
                     dgvUsers.Rows[index].Cells["ColAddress"].Value = user["Address"].ToString();
                     dgvUsers.Rows[index].Cells["ColNumber"].Value = user["number_address"].ToString();
@@ -226,25 +226,47 @@ namespace Interface
 
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            bool isConfirmed = false;
+
             if (e.RowIndex == -1) return;
+
+            int id = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ColId"].Value);
+            string name = dgvUsers.CurrentRow.Cells["ColName"].Value.ToString();
+            string CPF = dgvUsers.CurrentRow.Cells["ColCpf"].Value.ToString();
+            string birth = dgvUsers.CurrentRow.Cells["ColBirth"].Value.ToString();
+            string address = dgvUsers.CurrentRow.Cells["ColAddress"].Value.ToString();
+            string numberAddress = dgvUsers.CurrentRow.Cells["ColNumber"].Value.ToString();
+            string phone = dgvUsers.CurrentRow.Cells["ColPhone"].Value.ToString();
+            string familyReference = dgvUsers.CurrentRow.Cells["ColFamilyReference"].Value.ToString();
 
             if (dgvUsers.CurrentCell.ColumnIndex == 1)
             {
 
-                int id = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ColId"].Value);
-                string name = dgvUsers.CurrentRow.Cells["ColName"].Value.ToString();
-                string CPF = dgvUsers.CurrentRow.Cells["ColCpf"].Value.ToString();
-                string birth = dgvUsers.CurrentRow.Cells["ColBirth"].Value.ToString();
-                string address = dgvUsers.CurrentRow.Cells["ColAddress"].Value.ToString();
-                string numberAddress = dgvUsers.CurrentRow.Cells["ColNumber"].Value.ToString();
-                string phone = dgvUsers.CurrentRow.Cells["ColPhone"].Value.ToString();
-                string familyReference = dgvUsers.CurrentRow.Cells["ColFamilyReference"].Value.ToString();
-
-                FrmSaveUser frmUser = new FrmSaveUser(id, name, CPF, birth, address, numberAddress, phone, familyReference);
+                FrmSaveUser frmUser = new FrmSaveUser(id, name, CPF, birth, phone, address, numberAddress, familyReference);
                 frmUser.ShowDialog();
-                if(frmUser.isSaved)
-                    loadEvents();
+                if (frmUser.isSaved)
+                    isConfirmed = true;
             }
+            else if (dgvUsers.CurrentCell.ColumnIndex == 2)
+            {
+                DialogResult dr = MessageBox.Show($"Deseja mesmo excluir o(a) usuário(a) {name} do sistema?", "CREAS Analytcs", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                if (dr == DialogResult.Yes)
+                {
+                    try
+                    {
+                        User.Delete(id);
+                        isConfirmed = true;
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Houve um erro no sistema. Tente novamente", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+            if (isConfirmed) loadEvents();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
