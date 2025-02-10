@@ -14,7 +14,12 @@ namespace Interface
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            checkedListBox1.ClearSelected();
+            clbCaseOfViolation.ClearSelected();
+        }
+
+        private void FrmCustomerService_Load(object sender, EventArgs e)
+        {
+            dtDate.MaxDate = DateTime.Now;
         }
     }
 }
