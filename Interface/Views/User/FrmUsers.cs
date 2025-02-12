@@ -242,7 +242,7 @@ namespace Interface
 
             if (dgvUsers.CurrentCell.ColumnIndex == 0)
             {
-                FrmCustomerService frmCustomer = new FrmCustomerService();
+                FrmCustomerService frmCustomer = new FrmCustomerService(id, name);
                 frmCustomer.ShowDialog();
             }
             else if (dgvUsers.CurrentCell.ColumnIndex == 1)
