@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using DataBase;
@@ -12,7 +13,7 @@ namespace Interface
     public partial class FrmCustomerService : Form
     {
         
-        int userId;
+        int userId, page = 1, pageMaximum = 1, serviceId;
 
         public FrmCustomerService()
         {
@@ -47,6 +48,7 @@ namespace Interface
             PaefiService paefiService = new PaefiService();
             try
             {
+                paefiService.id = serviceId;
                 paefiService.dateInsertion = dtDate.Value;
                 paefiService.insertionInPaefi = txtInsertionInPaefi.Text.Trim();
                 paefiService.summaryDescriptionOfTheCase = txtDescription.Text.Trim();
@@ -68,20 +70,6 @@ namespace Interface
 
                 paefiService.isThereFollowUp = rbYesFollowUp.Checked;
                 paefiService.doesThePatientHaveSpecialNeeds = rbYesThereIsANeed.Checked;
-
-                //var checkedItems = new List<string>();
-                //checkedItems.Add("Violência física contra mulher");
-                //checkedItems.Add("Violência psicológica contra mulher");
-
-                //foreach (var check in checkedItems)
-                //{
-                //    int index = clbCaseOfViolation.Items.IndexOf(check);
-
-                //    if(index != -1)
-                //    {
-                //        clbCaseOfViolation.SetItemChecked(index, true);
-                //    }
-                //}
 
                 foreach (var item in clbCaseOfViolation.CheckedItems)
                 {
@@ -154,23 +142,59 @@ namespace Interface
             dgvHistory.CurrentRow.Selected = false;
 
             int id = Convert.ToInt32(dgvHistory.CurrentRow.Cells[2].Value);
-            //string name = dgvHistory.CurrentRow.Cells["ColName"].Value.ToString();
-            //string CPF = dgvHistory.CurrentRow.Cells["ColCpf"].Value.ToString();
-            //string birth = dgvHistory.CurrentRow.Cells["ColBirth"].Value.ToString();
-            //string address = dgvHistory.CurrentRow.Cells["ColAddress"].Value.ToString();
-            //string numberAddress = dgvHistory.CurrentRow.Cells["ColNumber"].Value.ToString();
-            //string phone = dgvHistory.CurrentRow.Cells["ColPhone"].Value.ToString();
-            //string familyReference = dgvHistory.CurrentRow.Cells["ColFamilyReference"].Value.ToString();
+            if (dgvHistory.CurrentCell.ColumnIndex == 0)
+            {
+                serviceId = int.Parse(dgvHistory.CurrentRow.Cells[2].Value.ToString());
+                dtDate.Text = dgvHistory.CurrentRow.Cells[3].Value.ToString();
+                txtInsertionInPaefi.Text = dgvHistory.CurrentRow.Cells[4].Value.ToString();
+               string typeService = dgvHistory.CurrentRow.Cells[5].Value.ToString();
 
-            //if (dgvHistory.CurrentCell.ColumnIndex == 0)
-            //{
+                switch (typeService)
+                {
+                    case "A distância":
+                        rbDistance.Checked = true; break;
+                    case "Visita domiciliar":
+                        rbHomeVisit.Checked = true; break;
+                    case "Presencial":
+                        rbPresence.Checked = true; break;
+                }
 
-            //    FrmSaveUser frmUser = new FrmSaveUser(id, name, CPF, birth, phone, address, numberAddress, familyReference);
-            //    frmUser.ShowDialog();
-            //    if (frmUser.isSaved)
-            //        isConfirmed = true;
-            //}
-            //else
+                txtSummaryOfDemand.Text = dgvHistory.CurrentRow.Cells[6].Value.ToString();
+                txtEntranceDoor.Text = dgvHistory.CurrentRow.Cells[7].Value.ToString();
+                txtTypeBenefits.Text = dgvHistory.CurrentRow.Cells[8].Value.ToString();
+
+                var caseOfViolation = dgvHistory.CurrentRow.Cells[9].Value.ToString().Split(';');
+
+                ClearCheckedTheListBox();
+                foreach (var check in caseOfViolation)
+                {
+                    int index = clbCaseOfViolation.Items.IndexOf(check);
+
+                    if (index != -1)
+                    {
+                        clbCaseOfViolation.SetItemChecked(index, true);
+                    }
+                }
+
+                string is_there_follow_up = dgvHistory.CurrentRow.Cells[10].Value.ToString();
+
+                if (is_there_follow_up == "Sim")
+
+                    rbYesFollowUp.Checked = true;
+                else rbNoFollowUp.Checked = true;
+
+                string doesThePatientHaveSpecialNeeds = dgvHistory.CurrentRow.Cells[11].Value.ToString();
+
+
+                   if (doesThePatientHaveSpecialNeeds == "Sim")
+                    rbYesThereIsANeed.Checked = true;
+                else rbNoThereIsANeed.Checked = true;
+                txtInterventionsPerformed.Text = dgvHistory.CurrentRow.Cells[12].Value.ToString();
+                txtReferralsMade.Text = dgvHistory.CurrentRow.Cells[13].Value.ToString();
+                txtDescription.Text = dgvHistory.CurrentRow.Cells[14].Value.ToString();
+
+            }
+         
 
             if (dgvHistory.CurrentCell.ColumnIndex == 1)
             {
@@ -191,6 +215,14 @@ namespace Interface
             }
 
             if (isConfirmed) loadEvents();
+        }
+
+        private void ClearCheckedTheListBox()
+        {
+            foreach (int index in clbCaseOfViolation.CheckedIndices)
+            {
+                clbCaseOfViolation.SetItemChecked(index, false);
+            }
         }
 
         private void cbRows_SelectedIndexChanged(object sender, EventArgs e)
@@ -246,8 +278,6 @@ namespace Interface
          
             cbPage.Text = (page > pageMaximum ? pageMaximum : page).ToString();
         }
-
-        int page = 1, pageMaximum = 1;
 
         private void CheckNumberOfPages(int numberRows)
         {
