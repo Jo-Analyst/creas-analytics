@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomerService));
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -65,6 +66,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lblDescriptionRow = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnArrowRight = new System.Windows.Forms.Button();
+            this.btnArrowLeft = new System.Windows.Forms.Button();
             this.dgvHistory = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.dtDate = new System.Windows.Forms.DateTimePicker();
@@ -73,8 +76,6 @@
             this.txtInterventionsPerformed = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.btnArrowRight = new System.Windows.Forms.Button();
-            this.btnArrowLeft = new System.Windows.Forms.Button();
             this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -123,6 +124,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
@@ -143,7 +145,7 @@
             this.txtInsertionInPaefi.MaxLength = 200;
             this.txtInsertionInPaefi.Name = "txtInsertionInPaefi";
             this.txtInsertionInPaefi.Size = new System.Drawing.Size(254, 26);
-            this.txtInsertionInPaefi.TabIndex = 0;
+            this.txtInsertionInPaefi.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -240,6 +242,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.clbCaseOfViolation);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.ForeColor = System.Drawing.Color.White;
@@ -293,7 +297,6 @@
             this.rbNoFollowUp.Name = "rbNoFollowUp";
             this.rbNoFollowUp.Size = new System.Drawing.Size(94, 33);
             this.rbNoFollowUp.TabIndex = 9;
-            this.rbNoFollowUp.TabStop = true;
             this.rbNoFollowUp.Text = "Não";
             this.rbNoFollowUp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbNoFollowUp.UseVisualStyleBackColor = true;
@@ -306,7 +309,6 @@
             this.rbYesFollowUp.Name = "rbYesFollowUp";
             this.rbYesFollowUp.Size = new System.Drawing.Size(94, 33);
             this.rbYesFollowUp.TabIndex = 8;
-            this.rbYesFollowUp.TabStop = true;
             this.rbYesFollowUp.Text = "Sim";
             this.rbYesFollowUp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbYesFollowUp.UseVisualStyleBackColor = true;
@@ -332,7 +334,6 @@
             this.rbNoThereIsANeed.Name = "rbNoThereIsANeed";
             this.rbNoThereIsANeed.Size = new System.Drawing.Size(94, 33);
             this.rbNoThereIsANeed.TabIndex = 11;
-            this.rbNoThereIsANeed.TabStop = true;
             this.rbNoThereIsANeed.Text = "Não";
             this.rbNoThereIsANeed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbNoThereIsANeed.UseVisualStyleBackColor = true;
@@ -345,7 +346,6 @@
             this.rbYesThereIsANeed.Name = "rbYesThereIsANeed";
             this.rbYesThereIsANeed.Size = new System.Drawing.Size(94, 33);
             this.rbYesThereIsANeed.TabIndex = 10;
-            this.rbYesThereIsANeed.TabStop = true;
             this.rbYesThereIsANeed.Text = "Sim";
             this.rbYesThereIsANeed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbYesThereIsANeed.UseVisualStyleBackColor = true;
@@ -367,7 +367,7 @@
             this.label4.Location = new System.Drawing.Point(438, 222);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(213, 18);
+            this.label4.Size = new System.Drawing.Size(193, 18);
             this.label4.TabIndex = 61;
             this.label4.Text = "Encaminhamentos realizados\t";
             // 
@@ -405,6 +405,9 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.panel1);
             this.groupBox5.Controls.Add(this.dgvHistory);
             this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -412,7 +415,7 @@
             this.groupBox5.Location = new System.Drawing.Point(688, 18);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(486, 518);
-            this.groupBox5.TabIndex = 57;
+            this.groupBox5.TabIndex = 45;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Histórico";
             // 
@@ -513,12 +516,49 @@
             this.label10.TabIndex = 11;
             this.label10.Text = "Exibir";
             // 
+            // btnArrowRight
+            // 
+            this.btnArrowRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnArrowRight.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnArrowRight.Enabled = false;
+            this.btnArrowRight.FlatAppearance.BorderSize = 0;
+            this.btnArrowRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArrowRight.Image = global::Interface.Properties.Resources.right_arrow_grey;
+            this.btnArrowRight.Location = new System.Drawing.Point(423, 6);
+            this.btnArrowRight.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnArrowRight.Name = "btnArrowRight";
+            this.btnArrowRight.Size = new System.Drawing.Size(38, 35);
+            this.btnArrowRight.TabIndex = 1789;
+            this.btnArrowRight.TabStop = false;
+            this.btnArrowRight.UseVisualStyleBackColor = true;
+            this.btnArrowRight.Click += new System.EventHandler(this.btnArrowRight_Click);
+            // 
+            // btnArrowLeft
+            // 
+            this.btnArrowLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnArrowLeft.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnArrowLeft.Enabled = false;
+            this.btnArrowLeft.FlatAppearance.BorderSize = 0;
+            this.btnArrowLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArrowLeft.Image = global::Interface.Properties.Resources.left_arrow_grey;
+            this.btnArrowLeft.Location = new System.Drawing.Point(377, 6);
+            this.btnArrowLeft.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnArrowLeft.Name = "btnArrowLeft";
+            this.btnArrowLeft.Size = new System.Drawing.Size(38, 35);
+            this.btnArrowLeft.TabIndex = 566;
+            this.btnArrowLeft.TabStop = false;
+            this.btnArrowLeft.UseVisualStyleBackColor = true;
+            this.btnArrowLeft.Click += new System.EventHandler(this.btnArrowLeft_Click);
+            // 
             // dgvHistory
             // 
             this.dgvHistory.AllowUserToAddRows = false;
             this.dgvHistory.AllowUserToDeleteRows = false;
             this.dgvHistory.AllowUserToResizeColumns = false;
             this.dgvHistory.AllowUserToResizeRows = false;
+            this.dgvHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvHistory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
             this.dgvHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvHistory.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
@@ -547,34 +587,34 @@
             this.Column11,
             this.Column8,
             this.Column9});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHistory.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvHistory.Dock = System.Windows.Forms.DockStyle.Top;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHistory.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvHistory.EnableHeadersVisualStyles = false;
             this.dgvHistory.Location = new System.Drawing.Point(3, 22);
             this.dgvHistory.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvHistory.MultiSelect = false;
             this.dgvHistory.Name = "dgvHistory";
             this.dgvHistory.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvHistory.RowHeadersVisible = false;
             this.dgvHistory.RowHeadersWidth = 51;
-            this.dgvHistory.Size = new System.Drawing.Size(480, 383);
-            this.dgvHistory.TabIndex = 3;
-            this.dgvHistory.TabStop = false;
+            this.dgvHistory.Size = new System.Drawing.Size(480, 435);
+            this.dgvHistory.TabIndex = 0;
+            this.dgvHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistory_CellClick);
+            this.dgvHistory.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistory_CellMouseEnter);
             // 
             // label7
             // 
@@ -594,7 +634,7 @@
             this.dtDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.dtDate.Name = "dtDate";
             this.dtDate.Size = new System.Drawing.Size(130, 26);
-            this.dtDate.TabIndex = 67;
+            this.dtDate.TabIndex = 2;
             // 
             // txtTypeBenefits
             // 
@@ -638,6 +678,7 @@
             // 
             // lblStatus
             // 
+            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStatus.AutoSize = true;
             this.lblStatus.ForeColor = System.Drawing.Color.White;
             this.lblStatus.Location = new System.Drawing.Point(182, 507);
@@ -645,38 +686,6 @@
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 18);
             this.lblStatus.TabIndex = 71;
-            // 
-            // btnArrowRight
-            // 
-            this.btnArrowRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnArrowRight.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnArrowRight.Enabled = false;
-            this.btnArrowRight.FlatAppearance.BorderSize = 0;
-            this.btnArrowRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArrowRight.Image = global::Interface.Properties.Resources.right_arrow_grey;
-            this.btnArrowRight.Location = new System.Drawing.Point(423, 6);
-            this.btnArrowRight.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnArrowRight.Name = "btnArrowRight";
-            this.btnArrowRight.Size = new System.Drawing.Size(38, 35);
-            this.btnArrowRight.TabIndex = 10;
-            this.btnArrowRight.TabStop = false;
-            this.btnArrowRight.UseVisualStyleBackColor = true;
-            // 
-            // btnArrowLeft
-            // 
-            this.btnArrowLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnArrowLeft.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnArrowLeft.Enabled = false;
-            this.btnArrowLeft.FlatAppearance.BorderSize = 0;
-            this.btnArrowLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArrowLeft.Image = global::Interface.Properties.Resources.left_arrow_grey;
-            this.btnArrowLeft.Location = new System.Drawing.Point(377, 6);
-            this.btnArrowLeft.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.btnArrowLeft.Name = "btnArrowLeft";
-            this.btnArrowLeft.Size = new System.Drawing.Size(38, 35);
-            this.btnArrowLeft.TabIndex = 9;
-            this.btnArrowLeft.TabStop = false;
-            this.btnArrowLeft.UseVisualStyleBackColor = true;
             // 
             // ColEdit
             // 
@@ -700,6 +709,9 @@
             // ColDate
             // 
             this.ColDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.ColDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColDate.HeaderText = "Data";
             this.ColDate.Name = "ColDate";
             this.ColDate.ReadOnly = true;
@@ -829,11 +841,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCustomerService";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Atendimento";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmCustomerService_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -17,13 +17,20 @@ namespace Interface
         static public int SetPageQuantityUsers()
         {
             quantity = User.CountQuantityUsers();
-            return CalculacalculateNumberOfPage();
+            return CalculateNumberOfPage();
+        }  
+        
+        
+        static public int SetPageQuantityServices(int userId = 0)
+        {
+            quantity = PaefiService.CountQuantityServices(userId);
+            return CalculateNumberOfPage();
         } 
         
         static public int SetPageQuantityUsersByName(string name)
         {
             quantity = User.CountQuantityUsersByName(name);
-            return CalculacalculateNumberOfPage();
+            return CalculateNumberOfPage();
         } 
         
         //static public int SetPageQuantityServices(int personId)
@@ -32,7 +39,7 @@ namespace Interface
         //    return CalculacalculateNumberOfPage();
         //}
         
-        static private int CalculacalculateNumberOfPage()
+        static private int CalculateNumberOfPage()
         {
             double result = quantity / quantityRowsSelected;
             return (int)Math.Ceiling(result);

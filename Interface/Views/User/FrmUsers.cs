@@ -128,6 +128,7 @@ namespace Interface
                 int pageSelected = (page - 1) * quantRows;
 
                 DataTable dtUsers = string.IsNullOrWhiteSpace(txtName.Text) ? User.FindAll(pageSelected, quantRows) : User.FindByName(txtName.Text.Trim(), pageSelected, quantRows);
+
                 foreach (DataRow user in dtUsers.Rows)
                 {
                     int index = dgvUsers.Rows.Add();

@@ -87,14 +87,14 @@ namespace DataBase
             }
         }
 
-        static public DataTable FindByUserId(int userId)
+        static public DataTable FindByUserId(int userId, int page = 0, int quantRows = 5)
         {
             DataTable table = new DataTable();
             try
             {
                 using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string query = "SELECT * FROM Paefi_services WHERE user_id = @user_id";
+                    string query = $"SELECT id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, insertion_in_PAEFI, type_of_service, summary_of_demand, case_of_violation, type_of_benefit, is_there_follow_up, does_the_patient_have_special_needs, interventions_performed, referrals_made, summary_description_of_the_case, user_id, entrance_door FROM Paefi_services WHERE user_id = @user_id ORDER BY date_insertion DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {
@@ -112,6 +112,20 @@ namespace DataBase
             }
 
             return table;
+        }
+
+        public static double CountQuantityServices(int userId = 0)
+        {
+            using (var connection = new SqlConnection(DbConnectionString.connectionString))
+            {
+                connection.Open();
+                string query = $"SELECT COUNT(id) FROM paefi_services WHERE user_id = {userId}";
+                var command = new SqlCommand(query, connection);
+                command.CommandText = query;
+
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                return count;
+            }
         }
     }
 }
