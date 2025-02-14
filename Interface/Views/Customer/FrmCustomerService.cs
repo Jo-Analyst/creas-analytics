@@ -45,6 +45,21 @@ namespace Interface
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            bool isValid = IsValidateFields();
+
+            if (!isValid)
+            {
+                MessageBox.Show("Informe as informações que são necessárias para o relatório.", "CREAS Analytics", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (btnSave.Text == "Novo")
+            {
+                ClearFields();
+                btnSave.Text = "Salvar";
+                return;
+            }
+
             PaefiService paefiService = new PaefiService();
             try
             {
@@ -54,7 +69,6 @@ namespace Interface
                 paefiService.summaryDescriptionOfTheCase = txtDescription.Text.Trim();
                 paefiService.entranceDoor = txtEntranceDoor.Text.Trim();
                 paefiService.interventionsPerformed = txtInterventionsPerformed.Text.Trim();
-                paefiService.summaryDescriptionOfTheCase = txtSummaryOfDemand.Text.Trim();
                 paefiService.typeOfBenefit = txtTypeBenefits.Text.Trim();
                 paefiService.referralsMade = txtReferralsMade.Text.Trim();
                 paefiService.summaryOfDemand = txtSummaryOfDemand.Text.Trim();
@@ -76,10 +90,17 @@ namespace Interface
                     paefiService.caseOfViolation += $"{item};";
                 }
 
-               int result = paefiService.Save();
+                paefiService.Save();
                 lblStatus.Text = "Atendimento salvo com sucesso";
 
                 loadEvents();
+                if(serviceId > 0)
+                {
+                    ClearFields();
+                    return;
+                }
+
+                btnSave.Text = "Novo";
 
             }
             catch (Exception ex)
@@ -128,26 +149,25 @@ namespace Interface
             }
         }
 
-        private bool validateFields()
+        private bool IsValidateFields()
         {
-            return string.IsNullOrWhiteSpace(txtInsertionInPaefi.Text) && string.IsNullOrWhiteSpace(txtDescription.Text) && string.IsNullOrWhiteSpace(txtEntranceDoor.Text) && string.IsNullOrWhiteSpace(txtReferralsMade.Text) && string.IsNullOrWhiteSpace(txtSummaryOfDemand.Text) && string.IsNullOrWhiteSpace(txtTypeBenefits.Text) && !rbHomeVisit.Checked && !rbNoFollowUp.Checked && !rbNoThereIsANeed.Checked && !rbPresence.Checked && !rbYesFollowUp.Checked && !rbYesThereIsANeed.Checked && !rbDistance.Checked;
+            return !string.IsNullOrWhiteSpace(txtInsertionInPaefi.Text) || !string.IsNullOrWhiteSpace(txtDescription.Text) || !string.IsNullOrWhiteSpace(txtEntranceDoor.Text) || !string.IsNullOrWhiteSpace(txtReferralsMade.Text) || !string.IsNullOrWhiteSpace(txtSummaryOfDemand.Text) || !string.IsNullOrWhiteSpace(txtTypeBenefits.Text);
         }
 
         private void dgvHistory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
          
-            bool isConfirmed = false;
-
             dgvHistory.CurrentRow.Selected = false;
 
             int id = Convert.ToInt32(dgvHistory.CurrentRow.Cells[2].Value);
             if (dgvHistory.CurrentCell.ColumnIndex == 0)
             {
+                ClearFields();
                 serviceId = int.Parse(dgvHistory.CurrentRow.Cells[2].Value.ToString());
                 dtDate.Text = dgvHistory.CurrentRow.Cells[3].Value.ToString();
                 txtInsertionInPaefi.Text = dgvHistory.CurrentRow.Cells[4].Value.ToString();
-               string typeService = dgvHistory.CurrentRow.Cells[5].Value.ToString();
+                string typeService = dgvHistory.CurrentRow.Cells[5].Value.ToString();
 
                 switch (typeService)
                 {
@@ -186,13 +206,12 @@ namespace Interface
                 string doesThePatientHaveSpecialNeeds = dgvHistory.CurrentRow.Cells[11].Value.ToString();
 
 
-                   if (doesThePatientHaveSpecialNeeds == "Sim")
+                if (doesThePatientHaveSpecialNeeds == "Sim")
                     rbYesThereIsANeed.Checked = true;
                 else rbNoThereIsANeed.Checked = true;
                 txtInterventionsPerformed.Text = dgvHistory.CurrentRow.Cells[12].Value.ToString();
                 txtReferralsMade.Text = dgvHistory.CurrentRow.Cells[13].Value.ToString();
                 txtDescription.Text = dgvHistory.CurrentRow.Cells[14].Value.ToString();
-
             }
          
 
@@ -205,7 +224,8 @@ namespace Interface
                     try
                     {
                         PaefiService.Delete(id);
-                        isConfirmed = true;
+                        ClearFields();
+                        loadEvents();
                     }
                     catch (Exception)
                     {
@@ -213,8 +233,6 @@ namespace Interface
                     }
                 }
             }
-
-            if (isConfirmed) loadEvents();
         }
 
         private void ClearCheckedTheListBox()
@@ -349,6 +367,33 @@ namespace Interface
 
             dgvHistory.Focus(); 
             loadDgvHistory();
+        }
+
+        private void ClearFields()
+        {
+            txtDescription.Clear();
+            txtEntranceDoor.Clear();
+            txtInsertionInPaefi.Clear();
+            txtInterventionsPerformed.Clear();
+            txtReferralsMade.Clear();
+            txtSummaryOfDemand.Clear();
+            txtTypeBenefits.Clear();
+            rbHomeVisit.Checked = true;
+            rbNoFollowUp.Checked = true;
+            rbNoThereIsANeed.Checked = true;
+            ClearCheckedTheListBox();
+            lblStatus.Text = string.Empty;
+            serviceId = 0;
+            dtDate.Text = DateTime.Now.ToShortDateString();
+            btnSave.Text = "Salvar";
+        }
+
+        private void FrmCustomerService_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSave_Click(sender, e);
+            }
         }
 
         private void DisabledBtnArrowLeft()

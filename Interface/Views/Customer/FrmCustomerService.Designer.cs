@@ -69,13 +69,6 @@
             this.btnArrowRight = new System.Windows.Forms.Button();
             this.btnArrowLeft = new System.Windows.Forms.Button();
             this.dgvHistory = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dtDate = new System.Windows.Forms.DateTimePicker();
-            this.txtTypeBenefits = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtInterventionsPerformed = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
             this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,6 +84,13 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dtDate = new System.Windows.Forms.DateTimePicker();
+            this.txtTypeBenefits = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtInterventionsPerformed = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -104,7 +104,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(161, 47);
+            this.label2.Location = new System.Drawing.Point(152, 47);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(137, 18);
@@ -140,11 +140,11 @@
             // 
             // txtInsertionInPaefi
             // 
-            this.txtInsertionInPaefi.Location = new System.Drawing.Point(164, 69);
+            this.txtInsertionInPaefi.Location = new System.Drawing.Point(155, 69);
             this.txtInsertionInPaefi.Margin = new System.Windows.Forms.Padding(4);
             this.txtInsertionInPaefi.MaxLength = 200;
             this.txtInsertionInPaefi.Name = "txtInsertionInPaefi";
-            this.txtInsertionInPaefi.Size = new System.Drawing.Size(254, 26);
+            this.txtInsertionInPaefi.Size = new System.Drawing.Size(263, 26);
             this.txtInsertionInPaefi.TabIndex = 3;
             // 
             // groupBox1
@@ -165,11 +165,13 @@
             // 
             this.rbHomeVisit.Appearance = System.Windows.Forms.Appearance.Button;
             this.rbHomeVisit.AutoSize = true;
+            this.rbHomeVisit.Checked = true;
             this.rbHomeVisit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbHomeVisit.Location = new System.Drawing.Point(226, 34);
             this.rbHomeVisit.Name = "rbHomeVisit";
             this.rbHomeVisit.Size = new System.Drawing.Size(132, 30);
             this.rbHomeVisit.TabIndex = 3;
+            this.rbHomeVisit.TabStop = true;
             this.rbHomeVisit.Text = "Visita domiciliar";
             this.rbHomeVisit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbHomeVisit.UseVisualStyleBackColor = true;
@@ -292,11 +294,13 @@
             // rbNoFollowUp
             // 
             this.rbNoFollowUp.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbNoFollowUp.Checked = true;
             this.rbNoFollowUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbNoFollowUp.Location = new System.Drawing.Point(132, 60);
             this.rbNoFollowUp.Name = "rbNoFollowUp";
             this.rbNoFollowUp.Size = new System.Drawing.Size(94, 33);
             this.rbNoFollowUp.TabIndex = 9;
+            this.rbNoFollowUp.TabStop = true;
             this.rbNoFollowUp.Text = "Não";
             this.rbNoFollowUp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbNoFollowUp.UseVisualStyleBackColor = true;
@@ -329,11 +333,13 @@
             // rbNoThereIsANeed
             // 
             this.rbNoThereIsANeed.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbNoThereIsANeed.Checked = true;
             this.rbNoThereIsANeed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbNoThereIsANeed.Location = new System.Drawing.Point(132, 46);
             this.rbNoThereIsANeed.Name = "rbNoThereIsANeed";
             this.rbNoThereIsANeed.Size = new System.Drawing.Size(94, 33);
             this.rbNoThereIsANeed.TabIndex = 11;
+            this.rbNoThereIsANeed.TabStop = true;
             this.rbNoThereIsANeed.Text = "Não";
             this.rbNoThereIsANeed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbNoThereIsANeed.UseVisualStyleBackColor = true;
@@ -616,77 +622,6 @@
             this.dgvHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistory_CellClick);
             this.dgvHistory.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistory_CellMouseEnter);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(24, 47);
-            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 18);
-            this.label7.TabIndex = 66;
-            this.label7.Text = "Data";
-            // 
-            // dtDate
-            // 
-            this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtDate.Location = new System.Drawing.Point(27, 69);
-            this.dtDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dtDate.Name = "dtDate";
-            this.dtDate.Size = new System.Drawing.Size(130, 26);
-            this.dtDate.TabIndex = 2;
-            // 
-            // txtTypeBenefits
-            // 
-            this.txtTypeBenefits.Location = new System.Drawing.Point(226, 286);
-            this.txtTypeBenefits.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTypeBenefits.MaxLength = 200;
-            this.txtTypeBenefits.Name = "txtTypeBenefits";
-            this.txtTypeBenefits.Size = new System.Drawing.Size(193, 26);
-            this.txtTypeBenefits.TabIndex = 7;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(227, 264);
-            this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(137, 18);
-            this.label11.TabIndex = 68;
-            this.label11.Text = "Tipo de Benefícios";
-            // 
-            // txtInterventionsPerformed
-            // 
-            this.txtInterventionsPerformed.Location = new System.Drawing.Point(226, 223);
-            this.txtInterventionsPerformed.Margin = new System.Windows.Forms.Padding(4);
-            this.txtInterventionsPerformed.MaxLength = 200;
-            this.txtInterventionsPerformed.Name = "txtInterventionsPerformed";
-            this.txtInterventionsPerformed.Size = new System.Drawing.Size(193, 26);
-            this.txtInterventionsPerformed.TabIndex = 5;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(227, 201);
-            this.label12.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(177, 18);
-            this.label12.TabIndex = 70;
-            this.label12.Text = "Intererveções realizadas";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.ForeColor = System.Drawing.Color.White;
-            this.lblStatus.Location = new System.Drawing.Point(182, 507);
-            this.lblStatus.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 18);
-            this.lblStatus.TabIndex = 71;
-            // 
             // ColEdit
             // 
             this.ColEdit.HeaderText = "Editar";
@@ -804,6 +739,77 @@
             this.Column9.ReadOnly = true;
             this.Column9.Width = 225;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(24, 47);
+            this.label7.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 18);
+            this.label7.TabIndex = 66;
+            this.label7.Text = "Data";
+            // 
+            // dtDate
+            // 
+            this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtDate.Location = new System.Drawing.Point(27, 69);
+            this.dtDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtDate.Name = "dtDate";
+            this.dtDate.Size = new System.Drawing.Size(121, 26);
+            this.dtDate.TabIndex = 2;
+            // 
+            // txtTypeBenefits
+            // 
+            this.txtTypeBenefits.Location = new System.Drawing.Point(226, 286);
+            this.txtTypeBenefits.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTypeBenefits.MaxLength = 200;
+            this.txtTypeBenefits.Name = "txtTypeBenefits";
+            this.txtTypeBenefits.Size = new System.Drawing.Size(193, 26);
+            this.txtTypeBenefits.TabIndex = 7;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(227, 264);
+            this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(137, 18);
+            this.label11.TabIndex = 68;
+            this.label11.Text = "Tipo de Benefícios";
+            // 
+            // txtInterventionsPerformed
+            // 
+            this.txtInterventionsPerformed.Location = new System.Drawing.Point(226, 223);
+            this.txtInterventionsPerformed.Margin = new System.Windows.Forms.Padding(4);
+            this.txtInterventionsPerformed.MaxLength = 200;
+            this.txtInterventionsPerformed.Name = "txtInterventionsPerformed";
+            this.txtInterventionsPerformed.Size = new System.Drawing.Size(193, 26);
+            this.txtInterventionsPerformed.TabIndex = 5;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(227, 201);
+            this.label12.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(177, 18);
+            this.label12.TabIndex = 70;
+            this.label12.Text = "Intererveções realizadas";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.ForeColor = System.Drawing.Color.White;
+            this.lblStatus.Location = new System.Drawing.Point(179, 507);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(0, 18);
+            this.lblStatus.TabIndex = 71;
+            // 
             // FrmCustomerService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -847,6 +853,7 @@
             this.Text = "Atendimento";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmCustomerService_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCustomerService_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

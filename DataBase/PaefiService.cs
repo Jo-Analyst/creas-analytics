@@ -21,13 +21,13 @@ namespace DataBase
         public int userId { get; set; }
         public DateTime dateInsertion { get; set; }
 
-        public int Save()
+        public void Save()
         {
             using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
             {
                 string query = id == 0
                     ? "INSERT INTO paefi_services (insertion_in_PAEFI, type_of_service, summary_of_demand, case_of_violation, type_of_benefit, is_there_follow_up, does_the_patient_have_special_needs, interventions_performed, referrals_made, summary_description_of_the_case, user_id, date_insertion, entrance_door) VALUES (@insertion_in_PAEFI, @type_of_service, @summary_of_demand, @case_of_violation, @type_of_benefit, @is_there_follow_up, @does_the_patient_have_special_needs, @interventions_performed, @referrals_made, @summary_description_of_the_case, @user_id, @date_insertion, @entrance_door); SELECT @@IDENTITY"
-                    : "UPDATE Paefi_services SET type_of_service = @type_of_service, summary_of_demand = @summary_of_demand, case_of_violation = @case_of_violation, type_of_benefit = @type_of_benefit, is_there_follow_up = @is_there_follow_up, does_the_patient_have_special_needs = @does_the_patient_have_special_needs, interventions_performed = @interventions_performed, referrals_made = @referrals_made, summary_description_of_the_case = @summary_description_of_the_case, user_id = @user_id, date_insertion = @date_insertion, entrance_door = @entrance_door WHERE id = @id";
+                    : "UPDATE Paefi_services SET insertion_in_PAEFI = @insertion_in_PAEFI, type_of_service = @type_of_service, summary_of_demand = @summary_of_demand, case_of_violation = @case_of_violation, type_of_benefit = @type_of_benefit, is_there_follow_up = @is_there_follow_up, does_the_patient_have_special_needs = @does_the_patient_have_special_needs, interventions_performed = @interventions_performed, referrals_made = @referrals_made, summary_description_of_the_case = @summary_description_of_the_case, user_id = @user_id, date_insertion = @date_insertion, entrance_door = @entrance_door WHERE id = @id";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -49,10 +49,7 @@ namespace DataBase
                     try
                     {
                         connection.Open();
-                        if (id == 0)
-                            id = Convert.ToInt32(command.ExecuteScalar());
-                        else
-                            command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
                     }
                     catch (Exception ex)
                     {
@@ -60,8 +57,6 @@ namespace DataBase
                     }
                 }
             }
-
-            return id;
         }
 
         static public void Delete(int id)
