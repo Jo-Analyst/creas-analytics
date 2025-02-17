@@ -85,11 +85,17 @@
     <Compile Include="Views\Customer\FrmCustomerService.Designer.cs">
       <DependentUpon>FrmCustomerService.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmCreasAnalyst.cs">
+    <Compile Include="Views\FrmCreasAnalystics.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmCreasAnalyst.Designer.cs">
-      <DependentUpon>FrmCreasAnalyst.cs</DependentUpon>
+    <Compile Include="Views\FrmCreasAnalystics.Designer.cs">
+      <DependentUpon>FrmCreasAnalystics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Report\FrmReportService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Report\FrmReportService.Designer.cs">
+      <DependentUpon>FrmReportService.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\User\FrmSaveUser.cs">
       <SubType>Form</SubType>
@@ -116,8 +122,11 @@
     <EmbeddedResource Include="Views\Customer\FrmCustomerService.resx">
       <DependentUpon>FrmCustomerService.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmCreasAnalyst.resx">
-      <DependentUpon>FrmCreasAnalyst.cs</DependentUpon>
+    <EmbeddedResource Include="Views\FrmCreasAnalystics.resx">
+      <DependentUpon>FrmCreasAnalystics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Report\FrmReportService.resx">
+      <DependentUpon>FrmReportService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\User\FrmSaveUser.resx">
       <DependentUpon>FrmSaveUser.cs</DependentUpon>

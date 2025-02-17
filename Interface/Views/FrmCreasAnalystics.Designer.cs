@@ -1,6 +1,6 @@
 ﻿namespace Interface
 {
-    partial class FrmCreasAnalyst
+    partial class FrmCreasAnalystics
     {
         /// <summary>
         /// Required designer variable.
@@ -29,33 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCreasAnalyst));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCreasAnalystics));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuUser = new System.Windows.Forms.ToolStripMenuItem();
             this.menuReport = new System.Windows.Forms.ToolStripMenuItem();
             this.serviçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSetting = new System.Windows.Forms.ToolStripMenuItem();
-            this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuUser = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.atendimentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 25);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(852, 433);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // menuStrip1
             // 
@@ -71,13 +60,33 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // cadastroToolStripMenuItem
+            // 
+            this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuUser});
+            this.cadastroToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
+            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 19);
+            this.cadastroToolStripMenuItem.Text = "Cadastro";
+            // 
+            // menuUser
+            // 
+            this.menuUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
+            this.menuUser.ForeColor = System.Drawing.Color.White;
+            this.menuUser.Name = "menuUser";
+            this.menuUser.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
+            this.menuUser.Size = new System.Drawing.Size(180, 22);
+            this.menuUser.Text = "Usuário";
+            this.menuUser.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
+            // 
             // menuReport
             // 
+            this.menuReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.atendimentosToolStripMenuItem});
             this.menuReport.ForeColor = System.Drawing.Color.White;
             this.menuReport.Name = "menuReport";
             this.menuReport.Size = new System.Drawing.Size(66, 19);
             this.menuReport.Text = "Relatório";
-            this.menuReport.ToolTipText = "Gerar Relatório - CTRL+R";
             // 
             // serviçoToolStripMenuItem
             // 
@@ -98,25 +107,6 @@
             | System.Windows.Forms.Keys.A)));
             this.menuSetting.Size = new System.Drawing.Size(185, 22);
             this.menuSetting.Text = "Ajustar";
-            // 
-            // cadastroToolStripMenuItem
-            // 
-            this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuUser});
-            this.cadastroToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
-            this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 19);
-            this.cadastroToolStripMenuItem.Text = "Cadastro";
-            // 
-            // menuUser
-            // 
-            this.menuUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
-            this.menuUser.ForeColor = System.Drawing.Color.White;
-            this.menuUser.Name = "menuUser";
-            this.menuUser.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.menuUser.Size = new System.Drawing.Size(180, 22);
-            this.menuUser.Text = "Usuário";
-            this.menuUser.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -142,7 +132,31 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Desenvolvido por Joelmir Rogério Carvalho";
             // 
-            // FrmCreasAnalyst
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 25);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(852, 433);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // atendimentosToolStripMenuItem
+            // 
+            this.atendimentosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
+            this.atendimentosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.atendimentosToolStripMenuItem.Name = "atendimentosToolStripMenuItem";
+            this.atendimentosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.R)));
+            this.atendimentosToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.atendimentosToolStripMenuItem.Text = "Atendimentos";
+            this.atendimentosToolStripMenuItem.ToolTipText = "Gerar Relatório";
+            this.atendimentosToolStripMenuItem.Click += new System.EventHandler(this.atendimentosToolStripMenuItem_Click);
+            // 
+            // FrmCreasAnalystics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -155,15 +169,15 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FrmCreasAnalyst";
+            this.Name = "FrmCreasAnalystics";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Creas Analyst";
+            this.Text = "Creas Analystics";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,5 +195,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuSetting;
         private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuUser;
+        private System.Windows.Forms.ToolStripMenuItem atendimentosToolStripMenuItem;
     }
 }

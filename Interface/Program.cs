@@ -13,7 +13,7 @@ namespace Interface
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmCreasAnalyst());
+            Application.Run(new FrmCreasAnalystics());
         }
     }
 }
