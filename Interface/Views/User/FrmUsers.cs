@@ -23,7 +23,7 @@ namespace Interface
             if (frmSaveUser.isSaved)
             {
                 FrmUsers_Load(sender, e);
-                loadEvents();
+                LoadEvents();
             }
         }
 
@@ -103,7 +103,7 @@ namespace Interface
         {
             cbPage.Text = "1";
             cbRows.Text = "5";
-            loadEvents();
+            LoadEvents();
             this.cbRows.SelectedIndexChanged += cbRows_SelectedIndexChanged;
             this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
         }
@@ -176,7 +176,7 @@ namespace Interface
                 btnNewUser_Click(sender, e);
         }
 
-        private void loadEvents()
+        private void LoadEvents()
         {
             CheckNumberOfPages(int.Parse(cbRows.Text));
             UpdateComboBoxItems();
@@ -186,7 +186,7 @@ namespace Interface
 
         private void cbRows_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadEvents();
+            LoadEvents();
             if (page == pageMaximum)
             {
                 DisabledBtnArrowLeft();
@@ -272,12 +272,12 @@ namespace Interface
                 }
             }
 
-            if (isConfirmed) loadEvents();
+            if (isConfirmed) LoadEvents();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
-            loadEvents();
+            LoadEvents();
             if (pageMaximum == 1)
             {
                 DisabledBtnArrowLeft();

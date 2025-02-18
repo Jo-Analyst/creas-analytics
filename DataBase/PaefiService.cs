@@ -159,15 +159,66 @@ namespace DataBase
 
         public static double CountQuantityServices(int userId = 0)
         {
-            using (var connection = new SqlConnection(DbConnectionString.connectionString))
+            try
             {
-                connection.Open();
-                string query = $"SELECT COUNT(id) FROM paefi_services WHERE user_id = {userId}";
-                var command = new SqlCommand(query, connection);
-                command.CommandText = query;
+                using (var connection = new SqlConnection(DbConnectionString.connectionString))
+                {
+                    connection.Open();
+                    string query = $"SELECT COUNT(id) FROM paefi_services WHERE user_id = {userId}";
+                    var command = new SqlCommand(query, connection);
+                    command.CommandText = query;
 
-                int count = Convert.ToInt32(command.ExecuteScalar());
-                return count;
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    return count;
+                }
+
+            }
+            catch
+            {
+                throw;
+            }
+        } 
+        
+        public static double CountQuantityServicesAll()
+        {
+            try
+            {
+                using (var connection = new SqlConnection(DbConnectionString.connectionString))
+                {
+                    connection.Open();
+                    string query = $"SELECT COUNT(id) FROM paefi_services";
+                    var command = new SqlCommand(query, connection);
+                    command.CommandText = query;
+
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    return count;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+              
+        }
+
+        public static double CountQuantityServicesByPeriod(string month, string year)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(DbConnectionString.connectionString))
+                {
+                    connection.Open();
+                    string query = $"SELECT COUNT(id) FROM paefi_services WHERE date_insertion LIKE '%{month}%' AND date_insertion LIKE '%{year}%'";
+                    var command = new SqlCommand(query, connection);
+                    command.CommandText = query;
+
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    return count;
+                }
+            }
+            catch
+            {
+                throw;
             }
         }
     }

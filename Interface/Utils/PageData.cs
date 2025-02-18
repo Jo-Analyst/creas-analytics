@@ -25,6 +25,19 @@ namespace Interface
         {
             quantity = PaefiService.CountQuantityServices(userId);
             return CalculateNumberOfPage();
+        }  
+        
+        static public int SetPageQuantityServicesAll()
+        {
+            quantity = PaefiService.CountQuantityServicesAll();
+            return CalculateNumberOfPage();
+        }
+        
+        static public int SetPageQuantityServicesByPeriod(string month, string year)
+        {
+            quantity = PaefiService.CountQuantityServicesByPeriod(month, 
+                year);
+            return CalculateNumberOfPage();
         } 
         
         static public int SetPageQuantityUsersByName(string name)
