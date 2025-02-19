@@ -111,7 +111,7 @@ namespace Interface
         private void CheckNumberOfPages(int numberRows)
         {
             PageData.quantityRowsSelected = numberRows;
-            pageMaximum = string.IsNullOrWhiteSpace(txtName.Text) ?  PageData.SetPageQuantityUsers(): PageData.SetPageQuantityUsersByName(txtName.Text);
+            pageMaximum = string.IsNullOrWhiteSpace(txtName.Text) ? PageData.SetPageQuantityUsers() : PageData.SetPageQuantityUsersByName(txtName.Text);
 
             if (pageMaximum > 1)
                 EnabledBtnArrowRight();

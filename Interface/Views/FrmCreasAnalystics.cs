@@ -11,15 +11,25 @@ namespace Interface
             InitializeComponent();
         }
 
-        private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmUsers frmUsers = new FrmUsers();
             frmUsers.ShowDialog();
         }
 
-        private void atendimentosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ServiceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new FrmReportService().ShowDialog();
+        }
+
+        private void BackupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmBackupAndRestore().ShowDialog();
+        }
+
+        private void MenuSetting_Click(object sender, EventArgs e)
+        {
+            new FrmSetting().ShowDialog();
         }
     }
 }

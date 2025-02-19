@@ -1,20 +1,14 @@
 ﻿using DataBase;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Interface.Views
 {
     public partial class FrmReportService : Form
     {
+        int pageMaximum = 1, page = 1;
+
         public FrmReportService()
         {
             InitializeComponent();
@@ -22,7 +16,7 @@ namespace Interface.Views
 
         private void FrmReportService_Load(object sender, EventArgs e)
         {
-            for (int i = DateTime.Now.Year; i >= 2023 ; i--)
+            for (int i = DateTime.Now.Year; i >= 2023; i--)
             {
                 cbYear.Items.Add(i.ToString());
             }
@@ -34,7 +28,7 @@ namespace Interface.Views
             this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
         }
 
-        private void cbPage_SelectedIndexChanged(object sender,  EventArgs e)
+        private void cbPage_SelectedIndexChanged(object sender, EventArgs e)
         {
             page = int.Parse(cbPage.Text);
             if (pageMaximum == 1) return;
@@ -117,8 +111,6 @@ namespace Interface.Views
             }
         }
 
-        int pageMaximum = 1, page = 1;
-
         private void CheckNumberOfPages(int numberRows)
         {
             try
@@ -161,7 +153,7 @@ namespace Interface.Views
 
         private void UpdateUserDescription()
         {
-            lblDescriptionRow.Text = cbxAll.Checked ? $"Exibindo {dgvReport.Rows.Count} de {PageData.quantity} atendimentos realizados": $"Exibindo {dgvReport.Rows.Count} de {PageData.quantity} atendimentos realizados em {monthCompleted} de {cbYear.Text}";
+            lblDescriptionRow.Text = cbxAll.Checked ? $"Exibindo {dgvReport.Rows.Count} de {PageData.quantity} atendimentos realizados" : $"Exibindo {dgvReport.Rows.Count} de {PageData.quantity} atendimentos realizados em {monthCompleted} de {cbYear.Text}";
         }
 
         private void cbxAll_CheckedChanged(object sender, EventArgs e)
@@ -240,9 +232,9 @@ namespace Interface.Views
                 case 9:
                     monthCompleted = "Outubro"; break;
                 case 10:
-                     monthCompleted = "Novembro"; break;
+                    monthCompleted = "Novembro"; break;
                 case 11:
-                     monthCompleted = "Dezembro"; break;
+                    monthCompleted = "Dezembro"; break;
 
             }
         }

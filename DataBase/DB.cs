@@ -38,7 +38,7 @@ namespace DataBase
                 string sql = "CREATE TABLE [dbo].[Users] (" +
                 "[id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), " +
                 "[name] VARCHAR(200) NULL, " +
-                "[CPF] VARCHAR(MAX) NULL, " +              
+                "[CPF] VARCHAR(MAX) NULL, " +
                 "[birth] VARCHAR (10)    NULL," +
                 "[phone] VARCHAR(20) NULL," +
                 "[address] VARCHAR(200) NULL," +

@@ -79,6 +79,12 @@
     <Compile Include="Utils\PrintLocalReport.cs" />
     <Compile Include="Utils\PrintRDLC.cs" />
     <Compile Include="Utils\Security.cs" />
+    <Compile Include="Views\Backup\FrmBackupAndRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Backup\FrmBackupAndRestore.designer.cs">
+      <DependentUpon>FrmBackupAndRestore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Customer\FrmCustomerService.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="Views\Report\FrmReportService.Designer.cs">
       <DependentUpon>FrmReportService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Setting\FrmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Setting\FrmSetting.Designer.cs">
+      <DependentUpon>FrmSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\User\FrmSaveUser.cs">
       <SubType>Form</SubType>
@@ -119,6 +131,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Backup\FrmBackupAndRestore.resx">
+      <DependentUpon>FrmBackupAndRestore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Customer\FrmCustomerService.resx">
       <DependentUpon>FrmCustomerService.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Report\FrmReportService.resx">
       <DependentUpon>FrmReportService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Setting\FrmSetting.resx">
+      <DependentUpon>FrmSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\User\FrmSaveUser.resx">
       <DependentUpon>FrmSaveUser.cs</DependentUpon>
@@ -174,5 +192,6 @@
     <None Include="Resources\right-arrow-white.png" />
     <None Include="Resources\left-arrow-white.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

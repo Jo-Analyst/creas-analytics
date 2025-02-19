@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DataBase;
+using System;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Reflection;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using DataBase;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Interface
 {
     public partial class FrmCustomerService : Form
     {
-        
+
         int userId, page = 1, pageMaximum = 1, serviceId;
 
         public FrmCustomerService()
@@ -94,7 +89,7 @@ namespace Interface
                 lblStatus.Text = "Atendimento salvo com sucesso";
 
                 loadEvents();
-                if(serviceId > 0)
+                if (serviceId > 0)
                 {
                     ClearFields();
                     return;
@@ -144,8 +139,9 @@ namespace Interface
                     dgvHistory.Rows[index].Height = 45;
                 }
             }
-            catch (Exception) { 
-            MessageBox.Show("Houve um erro no sistema. Tente novamente mais tarde", "Creas Analytics", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception)
+            {
+                MessageBox.Show("Houve um erro no sistema. Tente novamente mais tarde", "Creas Analytics", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -157,7 +153,7 @@ namespace Interface
         private void dgvHistory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex == -1) return;
-         
+
             dgvHistory.CurrentRow.Selected = false;
 
             int id = Convert.ToInt32(dgvHistory.CurrentRow.Cells[2].Value);
@@ -213,7 +209,7 @@ namespace Interface
                 txtReferralsMade.Text = dgvHistory.CurrentRow.Cells[13].Value.ToString();
                 txtDescription.Text = dgvHistory.CurrentRow.Cells[14].Value.ToString();
             }
-         
+
 
             if (dgvHistory.CurrentCell.ColumnIndex == 1)
             {
@@ -293,14 +289,14 @@ namespace Interface
             {
                 cbPage.Items.Add(i);
             }
-         
+
             cbPage.Text = (page > pageMaximum ? pageMaximum : page).ToString();
         }
 
         private void CheckNumberOfPages(int numberRows)
         {
             PageData.quantityRowsSelected = numberRows;
-            pageMaximum =  PageData.SetPageQuantityServices(userId);
+            pageMaximum = PageData.SetPageQuantityServices(userId);
             if (pageMaximum > 1)
                 EnabledBtnArrowRight();
 
@@ -365,7 +361,7 @@ namespace Interface
                 EnabledBtnArrowLeft();
             }
 
-            dgvHistory.Focus(); 
+            dgvHistory.Focus();
             loadDgvHistory();
         }
 

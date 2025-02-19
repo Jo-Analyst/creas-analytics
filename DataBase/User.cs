@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DataBase
 {
@@ -127,7 +126,7 @@ namespace DataBase
             }
         }
 
-       static public DataTable FindAll(int page = 0, double quantRows = 5)
+        static public DataTable FindAll(int page = 0, double quantRows = 5)
         {
             try
             {
@@ -145,9 +144,9 @@ namespace DataBase
             {
                 throw;
             }
-        } 
-        
-        static public DataTable FindByName(string name,int page = 0, double quantRows = 5)
+        }
+
+        static public DataTable FindByName(string name, int page = 0, double quantRows = 5)
         {
             try
             {
@@ -180,7 +179,7 @@ namespace DataBase
                 return count;
             }
         }
-        
+
         public static double CountQuantityUsersByName(string name)
         {
             using (var connection = new SqlConnection(DbConnectionString.connectionString))

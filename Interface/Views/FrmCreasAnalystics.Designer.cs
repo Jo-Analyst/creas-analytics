@@ -34,13 +34,14 @@
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuUser = new System.Windows.Forms.ToolStripMenuItem();
             this.menuReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.atendimentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSetting = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.atendimentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -75,9 +76,9 @@
             this.menuUser.ForeColor = System.Drawing.Color.White;
             this.menuUser.Name = "menuUser";
             this.menuUser.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.menuUser.Size = new System.Drawing.Size(180, 22);
+            this.menuUser.Size = new System.Drawing.Size(156, 22);
             this.menuUser.Text = "Usuário";
-            this.menuUser.Click += new System.EventHandler(this.usuarioToolStripMenuItem_Click);
+            this.menuUser.Click += new System.EventHandler(this.UserToolStripMenuItem_Click);
             // 
             // menuReport
             // 
@@ -88,10 +89,23 @@
             this.menuReport.Size = new System.Drawing.Size(66, 19);
             this.menuReport.Text = "Relatório";
             // 
+            // atendimentosToolStripMenuItem
+            // 
+            this.atendimentosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
+            this.atendimentosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.atendimentosToolStripMenuItem.Name = "atendimentosToolStripMenuItem";
+            this.atendimentosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.R)));
+            this.atendimentosToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.atendimentosToolStripMenuItem.Text = "Atendimentos";
+            this.atendimentosToolStripMenuItem.ToolTipText = "Gerar Relatório";
+            this.atendimentosToolStripMenuItem.Click += new System.EventHandler(this.ServiceToolStripMenuItem_Click);
+            // 
             // serviçoToolStripMenuItem
             // 
             this.serviçoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuSetting});
+            this.menuSetting,
+            this.backupToolStripMenuItem});
             this.serviçoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.serviçoToolStripMenuItem.Name = "serviçoToolStripMenuItem";
             this.serviçoToolStripMenuItem.Size = new System.Drawing.Size(91, 19);
@@ -105,8 +119,20 @@
             this.menuSetting.Name = "menuSetting";
             this.menuSetting.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.A)));
-            this.menuSetting.Size = new System.Drawing.Size(185, 22);
+            this.menuSetting.Size = new System.Drawing.Size(186, 22);
             this.menuSetting.Text = "Ajustar";
+            this.menuSetting.Click += new System.EventHandler(this.MenuSetting_Click);
+            // 
+            // backupToolStripMenuItem
+            // 
+            this.backupToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
+            this.backupToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.B)));
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.backupToolStripMenuItem.Text = "Backup";
+            this.backupToolStripMenuItem.Click += new System.EventHandler(this.BackupToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -143,18 +169,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // atendimentosToolStripMenuItem
-            // 
-            this.atendimentosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
-            this.atendimentosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.atendimentosToolStripMenuItem.Name = "atendimentosToolStripMenuItem";
-            this.atendimentosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.R)));
-            this.atendimentosToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            this.atendimentosToolStripMenuItem.Text = "Atendimentos";
-            this.atendimentosToolStripMenuItem.ToolTipText = "Gerar Relatório";
-            this.atendimentosToolStripMenuItem.Click += new System.EventHandler(this.atendimentosToolStripMenuItem_Click);
             // 
             // FrmCreasAnalystics
             // 
@@ -196,5 +210,6 @@
         private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuUser;
         private System.Windows.Forms.ToolStripMenuItem atendimentosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
     }
 }

@@ -108,7 +108,7 @@ namespace DataBase
 
             return table;
         }
-        
+
         static public DataTable FindByAll(int page = 0, int quantRows = 5)
         {
             DataTable table = new DataTable();
@@ -119,7 +119,7 @@ namespace DataBase
                     string query = $"SELECT Paefi_services.id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, Paefi_services.insertion_in_PAEFI, Paefi_services.type_of_service, Paefi_services.summary_of_demand, Paefi_services.case_of_violation, Paefi_services.type_of_benefit, Paefi_services.is_there_follow_up, Paefi_services.does_the_patient_have_special_needs, Paefi_services.interventions_performed, Paefi_services.referrals_made, Paefi_services.summary_description_of_the_case, Paefi_services.user_id, Paefi_services.entrance_door, Users.name, Users.birth, Users.address, users.number_address, Users.family_reference FROM Paefi_services  INNER JOIN Users ON Users.id = Paefi_services.user_id ORDER BY date_insertion DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-                    { 
+                    {
                         connection.Open();
                         adapter.Fill(table);
                     }
@@ -131,9 +131,9 @@ namespace DataBase
             }
 
             return table;
-        } 
-        
-        static public DataTable FindByPeriod(string month, string year,int page = 0, int quantRows = 5)
+        }
+
+        static public DataTable FindByPeriod(string month, string year, int page = 0, int quantRows = 5)
         {
             DataTable table = new DataTable();
             try
@@ -143,7 +143,7 @@ namespace DataBase
                     string query = $"SELECT Paefi_services.id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, Paefi_services.insertion_in_PAEFI, Paefi_services.type_of_service, Paefi_services.summary_of_demand, Paefi_services.case_of_violation, Paefi_services.type_of_benefit, Paefi_services.is_there_follow_up, Paefi_services.does_the_patient_have_special_needs, Paefi_services.interventions_performed, Paefi_services.referrals_made, Paefi_services.summary_description_of_the_case, Paefi_services.user_id, Paefi_services.entrance_door, Users.name, Users.birth, Users.address, users.number_address, Users.family_reference FROM Paefi_services  INNER JOIN Users ON Users.id = Paefi_services.user_id WHERE date_insertion LIKE '%{month}%' AND date_insertion LIKE '%{year}%' ORDER BY date_insertion DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-                    { 
+                    {
                         connection.Open();
                         adapter.Fill(table);
                     }
@@ -177,8 +177,8 @@ namespace DataBase
             {
                 throw;
             }
-        } 
-        
+        }
+
         public static double CountQuantityServicesAll()
         {
             try
@@ -198,7 +198,7 @@ namespace DataBase
             {
                 throw;
             }
-              
+
         }
 
         public static double CountQuantityServicesByPeriod(string month, string year)

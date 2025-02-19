@@ -1,19 +1,19 @@
-﻿using System;
+﻿using DataBase;
+using System;
 using System.Windows.Forms;
-using DataBase;
 
 namespace Interface
 {
     public partial class FrmSaveUser : Form
     {
 
-        public bool isSaved {  get; set; }
+        public bool isSaved { get; set; }
         int userId;
         public FrmSaveUser()
         {
             InitializeComponent();
         }
-        
+
         public FrmSaveUser(int id, string name, string cpf, string birth, string phone, string address, string numberAddress, string familyReferences)
         {
             InitializeComponent();
@@ -29,13 +29,13 @@ namespace Interface
             this.btnSave.TabStop = true;
 
         }
-               
+
         private void btnSave_Click(object sender, System.EventArgs e)
         {
             try
             {
 
-                if(string.IsNullOrWhiteSpace(txtName.Text))
+                if (string.IsNullOrWhiteSpace(txtName.Text))
                 {
                     MessageBox.Show("Insira o nome do Usuário", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
@@ -61,16 +61,16 @@ namespace Interface
                 {
                     id = userId,
                     name = txtName.Text.Trim(),
-                    CPF = mkCPF.MaskCompleted ? Security.Cry(mkCPF.Text) : "",                   
+                    CPF = mkCPF.MaskCompleted ? Security.Cry(mkCPF.Text) : "",
                     birth = dtBirth.Text,
                     address = txtAddress.Text.Trim(),
                     numberAddress = txtNumberAddress.Text.Trim(),
                     phone = mkPhone.MaskCompleted ? mkPhone.Text : "",
                     familyReference = txtFamilyReference.Text.Trim()
                 }.Save();
-              
+
                 isSaved = true;
-               
+
                 Close();
             }
             catch (Exception)
@@ -81,7 +81,7 @@ namespace Interface
 
         private void FrmSaveUser_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter) 
+            if (e.KeyCode == Keys.Enter)
                 btnSave_Click(sender, e);
         }
     }
