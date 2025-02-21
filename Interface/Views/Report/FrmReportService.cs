@@ -308,6 +308,19 @@ namespace Interface.Views
             }
         }
 
+        private void btnGenerateChart_Click(object sender, EventArgs e)
+        {
+            new FrmChart().ShowDialog();
+        }
+
+        private void FrmReportService_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.G)
+                btnGenerateChart_Click(sender, e);
+            else if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) btnArrowRight_Click(sender, e);
+            else if (e.Control && e.KeyCode == Keys.Left && btnArrowLeft.Enabled) btnArrowLeft_Click(sender, e);
+        }
+
         private void cbYear_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadEvents();

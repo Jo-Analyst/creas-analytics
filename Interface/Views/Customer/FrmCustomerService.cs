@@ -387,9 +387,9 @@ namespace Interface
         private void FrmCustomerService_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {
                 btnSave_Click(sender, e);
-            }
+            else if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) btnArrowRight_Click(sender, e);
+            else if (e.Control && e.KeyCode == Keys.Left && btnArrowLeft.Enabled) btnArrowLeft_Click(sender, e);
         }
 
         private void DisabledBtnArrowLeft()

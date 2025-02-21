@@ -166,6 +166,22 @@
     <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnGenerateChart.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAAB0AAAAdAapBa/0AAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAABXElEQVRYR2NgGAWjYBQMVhAh324YptiWGqrYngbBbbEBCg0C6OpoAkCWhyu0/Q1TaP+PjMMV24+j
+        q6UJAPkcZOGhKZn/725IBOOeqAqQI/6hq6UJAAU5yAEgi/9fDQfjWRkl4FBAV4sOwhTaK8MV274jhdw/
+        UMiFKnXwo6vFCShxAMjyQtt6sHoQhobc/zDFjhh0tTgBJQ4AqQGphekDmQESA5mJrhYnGHUAIQdEKLQr
+        hMm3J8HKCBA7SLFFHiRHcwdEqzTwhSu1vwOxUbBi21s/9U5emjsgXL7VCETndC/7X3VhJxiD2MhyNHVA
+        qFy7MYguXLL2f/OfY2AMYiPLjTpg6DsAX2VERCL8B1IL0wcyAyQHMhPdHpwAV3Ucpth2jFA2BFU86HIg
+        s0IVWg3Q7cELwhU79JEbJKDKBFajhSp1yKEXRCAxqBw/WC1cX1sqyCx080fBKBgFgwYAALzpmPSTj56c
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAAAAAAEAIAAoIAQAFgAAACgAAAAAAQAAAAIAAAEAIAAAAAAAAAAEAMMOAADDDgAAAAAAAAAA

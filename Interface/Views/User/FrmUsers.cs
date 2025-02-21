@@ -174,6 +174,8 @@ namespace Interface
         {
             if (e.Control && e.KeyCode == Keys.N)
                 btnNewUser_Click(sender, e);
+            else if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) btnArrowRight_Click(sender, e);
+            else if (e.Control && e.KeyCode == Keys.Left && btnArrowLeft.Enabled) btnArrowLeft_Click(sender, e);
         }
 
         private void LoadEvents()
