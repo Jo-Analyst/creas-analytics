@@ -8,6 +8,7 @@ namespace Interface.Views
     public partial class FrmReportService : Form
     {
         int pageMaximum = 1, page = 1;
+        string monthCompleted;
 
         public FrmReportService()
         {
@@ -23,8 +24,9 @@ namespace Interface.Views
 
             cbPage.Text = "1";
             cbRows.Text = "5";
-            LoadEvents();
+            cbxAll_CheckedChanged(sender, e);
             this.cbRows.SelectedIndexChanged += cbRows_SelectedIndexChanged;
+            this.cbYear.SelectedIndexChanged += cbYear_SelectedIndexChanged;
             this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
         }
 
@@ -173,8 +175,6 @@ namespace Interface.Views
             cbYear.Enabled = !cbxAll.Checked;
         }
 
-        string monthCompleted;
-
         private void SelectedMonthTheCbMonth()
         {
             switch (DateTime.Now.Month)
@@ -235,7 +235,6 @@ namespace Interface.Views
                     monthCompleted = "Novembro"; break;
                 case 11:
                     monthCompleted = "Dezembro"; break;
-
             }
         }
 
@@ -247,6 +246,11 @@ namespace Interface.Views
         private void cbMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetMonthByIndex();
+            LoadEvents();
+        }
+
+        private void cbYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
             LoadEvents();
         }
 
@@ -319,11 +323,6 @@ namespace Interface.Views
                 btnGenerateChart_Click(sender, e);
             else if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) btnArrowRight_Click(sender, e);
             else if (e.Control && e.KeyCode == Keys.Left && btnArrowLeft.Enabled) btnArrowLeft_Click(sender, e);
-        }
-
-        private void cbYear_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadEvents();
         }
     }
 }
