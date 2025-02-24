@@ -155,6 +155,30 @@ namespace DataBase
             }
 
             return table;
+        } 
+        
+        static public DataTable GetQuantityCaseOfViolation(string month, string year)
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
+                {
+                    string query = $"SELECT Count(case_of_violation) quantity, case_of_violation FROM Paefi_services WHERE date_insertion LIKE '%{month}%' AND date_insertion LIKE '%{year}%' GROUP BY case_of_violation";
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                    {
+                        connection.Open();
+                        adapter.Fill(table);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return table;
         }
 
         public static double CountQuantityServices(int userId = 0)
