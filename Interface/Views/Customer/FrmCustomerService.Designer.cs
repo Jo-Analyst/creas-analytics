@@ -268,13 +268,6 @@
             this.clbCaseOfViolation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbCaseOfViolation.ForeColor = System.Drawing.Color.White;
             this.clbCaseOfViolation.FormattingEnabled = true;
-            this.clbCaseOfViolation.Items.AddRange(new object[] {
-            "Violência física contra mulher",
-            "Descriminação em decorrência de orientação sexual/orientação de gênero",
-            "Violência psicológica contra criança e adolescente",
-            "Violência institucional contra mulher",
-            "Situação de negligência com idosos",
-            "Violência psicológica contra mulher"});
             this.clbCaseOfViolation.Location = new System.Drawing.Point(3, 22);
             this.clbCaseOfViolation.Name = "clbCaseOfViolation";
             this.clbCaseOfViolation.Size = new System.Drawing.Size(650, 130);
@@ -377,7 +370,7 @@
             this.label4.Location = new System.Drawing.Point(438, 222);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(193, 18);
+            this.label4.Size = new System.Drawing.Size(213, 18);
             this.label4.TabIndex = 61;
             this.label4.Text = "Encaminhamentos realizados\t";
             // 

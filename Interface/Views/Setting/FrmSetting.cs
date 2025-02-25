@@ -9,6 +9,8 @@ namespace Interface
     public partial class FrmSetting : Form
     {
         List<string> caseOfViolations;
+        bool isEdition;
+        int indexCurrent;
 
         public FrmSetting()
         {
@@ -61,9 +63,20 @@ namespace Interface
                 MessageBox.Show("Informe o caso de violação que será adicionado no sistema", "CREAS Analytics", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 return;
             }
-         
-            InsertDataInDgv(txtDescription.Text.Trim());
-            caseOfViolations.Add(txtDescription.Text.Trim());
+
+            if (!isEdition)
+            {
+                InsertDataInDgv(txtDescription.Text.Trim());
+                caseOfViolations.Add(txtDescription.Text.Trim());
+            }
+            else
+            {
+                dgvCaseOfViolation.Rows[indexCurrent].Cells["ColDescription"].Value = txtDescription.Text.Trim();
+                caseOfViolations[indexCurrent] = txtDescription.Text.Trim();
+                isEdition = false;
+                btnInsert.Text = "Inserir Caso";
+            }
+
             txtDescription.Clear();
         }
 
@@ -85,9 +98,18 @@ namespace Interface
             if (e.ColumnIndex == 0)
             {
                 txtDescription.Text = dgvCaseOfViolation.CurrentRow.Cells["ColDescription"].Value.ToString();
+                isEdition = true;
+                indexCurrent = e.RowIndex;
+                btnInsert.Text = "Editar Caso";
             }
             else if (e.ColumnIndex == 1)
             {
+                if (dgvCaseOfViolation.Rows.Count == 1)
+                {
+                    MessageBox.Show("O sistema deve ter pelo menos um caso de violência cadastrado no sistema", "CREAS Analytics", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
                 dgvCaseOfViolation.Rows.RemoveAt(e.RowIndex);
                 caseOfViolations.RemoveAt(e.RowIndex);
             }

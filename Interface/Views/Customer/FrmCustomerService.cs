@@ -1,5 +1,8 @@
 ﻿using DataBase;
+using Interface.Properties;
+using Microsoft.ReportingServices.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -33,6 +36,7 @@ namespace Interface
             dgvHistory.Focus();
             cbPage.Text = "1";
             cbRows.Text = "5";
+            ToFillInCheckListBox();
             loadEvents();
             this.cbRows.SelectedIndexChanged += cbRows_SelectedIndexChanged;
             this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
@@ -280,6 +284,15 @@ namespace Interface
             UpdateComboBoxItems();
             loadDgvHistory();
 
+        }
+
+        private void ToFillInCheckListBox()
+        {
+            List<String> caseOfViolations = new List<String>(Settings.Default["caseOfViolations"].ToString().Split(';'));
+            foreach (String caseOfViolation in caseOfViolations)
+            {
+                clbCaseOfViolation.Items.Add(caseOfViolation);
+            }
         }
 
         private void UpdateComboBoxItems()
