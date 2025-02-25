@@ -1,4 +1,5 @@
 ﻿using DataBase;
+using Interface.Properties;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -132,9 +133,9 @@ namespace Interface
                 foreach (DataRow user in dtUsers.Rows)
                 {
                     int index = dgvUsers.Rows.Add();
-                    dgvUsers.Rows[index].Cells["ColADD"].Value = Properties.Resources.add_post;
-                    dgvUsers.Rows[index].Cells["ColEdit"].Value = Properties.Resources.user_avatar;
-                    dgvUsers.Rows[index].Cells["ColDelete"].Value = Properties.Resources.delete;
+                    dgvUsers.Rows[index].Cells["ColADD"].Value = Resources.add_post;
+                    dgvUsers.Rows[index].Cells["ColEdit"].Value = Resources.user_avatar;
+                    dgvUsers.Rows[index].Cells["ColDelete"].Value = Resources.delete;
                     dgvUsers.Rows[index].Cells["ColId"].Value = user["id"].ToString();
                     dgvUsers.Rows[index].Cells["ColName"].Value = user["name"].ToString();
                     dgvUsers.Rows[index].Cells["ColCPF"].Value = string.IsNullOrEmpty(user["CPF"].ToString()) ? "" : Security.Dry(user["CPF"].ToString());

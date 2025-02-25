@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSetting));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -40,8 +43,17 @@
             this.btnConfirm = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnInsert = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.dgvCaseOfViolation = new System.Windows.Forms.DataGridView();
+            this.ColEdit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ColDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCaseOfViolation)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -110,7 +122,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(12, 139);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(376, 72);
+            this.groupBox2.Size = new System.Drawing.Size(584, 72);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Impressão";
@@ -129,7 +141,7 @@
             // 
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirm.ForeColor = System.Drawing.Color.White;
-            this.btnConfirm.Location = new System.Drawing.Point(427, 157);
+            this.btnConfirm.Location = new System.Drawing.Point(427, 491);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(169, 46);
             this.btnConfirm.TabIndex = 0;
@@ -138,12 +150,119 @@
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // btnInsert
+            // 
+            this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInsert.ForeColor = System.Drawing.Color.White;
+            this.btnInsert.Location = new System.Drawing.Point(444, 226);
+            this.btnInsert.Name = "btnInsert";
+            this.btnInsert.Size = new System.Drawing.Size(134, 36);
+            this.btnInsert.TabIndex = 5;
+            this.btnInsert.Text = "Inserir Caso";
+            this.toolTip.SetToolTip(this.btnInsert, "Confirmar - [ENTER]");
+            this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnInsert);
+            this.groupBox3.Controls.Add(this.txtDescription);
+            this.groupBox3.Controls.Add(this.dgvCaseOfViolation);
+            this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
+            this.groupBox3.Location = new System.Drawing.Point(12, 217);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(584, 268);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Caso de Violação";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(21, 231);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(406, 26);
+            this.txtDescription.TabIndex = 4;
+            // 
+            // dgvUsers
+            // 
+            this.dgvCaseOfViolation.AllowUserToAddRows = false;
+            this.dgvCaseOfViolation.AllowUserToDeleteRows = false;
+            this.dgvCaseOfViolation.AllowUserToResizeColumns = false;
+            this.dgvCaseOfViolation.AllowUserToResizeRows = false;
+            this.dgvCaseOfViolation.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            this.dgvCaseOfViolation.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvCaseOfViolation.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCaseOfViolation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCaseOfViolation.ColumnHeadersHeight = 40;
+            this.dgvCaseOfViolation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColEdit,
+            this.ColDelete,
+            this.ColDescription});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCaseOfViolation.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCaseOfViolation.EnableHeadersVisualStyles = false;
+            this.dgvCaseOfViolation.Location = new System.Drawing.Point(2, 23);
+            this.dgvCaseOfViolation.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.dgvCaseOfViolation.MultiSelect = false;
+            this.dgvCaseOfViolation.Name = "dgvUsers";
+            this.dgvCaseOfViolation.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCaseOfViolation.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvCaseOfViolation.RowHeadersVisible = false;
+            this.dgvCaseOfViolation.RowHeadersWidth = 51;
+            this.dgvCaseOfViolation.Size = new System.Drawing.Size(578, 196);
+            this.dgvCaseOfViolation.TabIndex = 5;
+            this.dgvCaseOfViolation.TabStop = false;
+            this.dgvCaseOfViolation.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCaseOfViolation_CellClick);
+            this.dgvCaseOfViolation.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCaseOfViolation_CellMouseEnter);
+            // 
+            // ColEdit
+            // 
+            this.ColEdit.HeaderText = "Editar";
+            this.ColEdit.Name = "ColEdit";
+            this.ColEdit.ReadOnly = true;
+            // 
+            // ColDelete
+            // 
+            this.ColDelete.HeaderText = "Excluir";
+            this.ColDelete.Name = "ColDelete";
+            this.ColDelete.ReadOnly = true;
+            // 
+            // ColDescription
+            // 
+            this.ColDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColDescription.HeaderText = "Descrição";
+            this.ColDescription.Name = "ColDescription";
+            this.ColDescription.ReadOnly = true;
+            this.ColDescription.ToolTipText = "Referência Familiar";
+            // 
             // FrmSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
-            this.ClientSize = new System.Drawing.Size(617, 232);
+            this.ClientSize = new System.Drawing.Size(617, 549);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -163,6 +282,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCaseOfViolation)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -179,5 +301,12 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridView dgvCaseOfViolation;
+        private System.Windows.Forms.DataGridViewImageColumn ColEdit;
+        private System.Windows.Forms.DataGridViewImageColumn ColDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColDescription;
+        private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.TextBox txtDescription;
     }
 }

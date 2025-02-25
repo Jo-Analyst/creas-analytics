@@ -46,5 +46,18 @@ namespace Interface.Properties {
                 this["print_directory_direct"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"Violência física contra mulher; Descriminação em decorrência de orientação sexual/orientação de gênero; Violência psicológica contra criança e adolescente; Violência institucional contra mulher; Situação de negligência com idosos; Violência psicológica contra mulher
+")]
+        public string caseOfViolations {
+            get {
+                return ((string)(this["caseOfViolations"]));
+            }
+            set {
+                this["caseOfViolations"] = value;
+            }
+        }
     }
 }

@@ -8,5 +8,9 @@
     <Setting Name="print_directory_direct" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="caseOfViolations" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Violência física contra mulher; Descriminação em decorrência de orientação sexual/orientação de gênero; Violência psicológica contra criança e adolescente; Violência institucional contra mulher; Situação de negligência com idosos; Violência psicológica contra mulher
+</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
