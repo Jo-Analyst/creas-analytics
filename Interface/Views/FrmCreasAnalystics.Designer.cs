@@ -74,9 +74,10 @@
             // 
             this.menuUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
             this.menuUser.ForeColor = System.Drawing.Color.White;
+            this.menuUser.Image = ((System.Drawing.Image)(resources.GetObject("menuUser.Image")));
             this.menuUser.Name = "menuUser";
             this.menuUser.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.menuUser.Size = new System.Drawing.Size(156, 22);
+            this.menuUser.Size = new System.Drawing.Size(180, 22);
             this.menuUser.Text = "Usuário";
             this.menuUser.Click += new System.EventHandler(this.UserToolStripMenuItem_Click);
             // 
@@ -93,6 +94,7 @@
             // 
             this.atendimentosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
             this.atendimentosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.atendimentosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("atendimentosToolStripMenuItem.Image")));
             this.atendimentosToolStripMenuItem.Name = "atendimentosToolStripMenuItem";
             this.atendimentosToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.R)));
@@ -116,6 +118,7 @@
             // 
             this.menuSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
             this.menuSetting.ForeColor = System.Drawing.Color.White;
+            this.menuSetting.Image = ((System.Drawing.Image)(resources.GetObject("menuSetting.Image")));
             this.menuSetting.Name = "menuSetting";
             this.menuSetting.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.A)));
@@ -127,6 +130,7 @@
             // 
             this.backupToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
             this.backupToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.backupToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("backupToolStripMenuItem.Image")));
             this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
             this.backupToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.B)));

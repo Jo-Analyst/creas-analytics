@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace Interface
 {
@@ -51,7 +52,11 @@ namespace Interface
                 MessageBox.Show("Informe as informações que são necessárias para o relatório.", "CREAS Analytics", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-
+            else if (clbCaseOfViolation.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Informe os casos de violência.", "CREAS Analytics", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             if (btnSave.Text == "Novo")
             {
                 ClearFields();
@@ -194,6 +199,10 @@ namespace Interface
                     {
                         clbCaseOfViolation.SetItemChecked(index, true);
                     }
+                    else if(!string.IsNullOrWhiteSpace(check))
+                    {
+                        clbCaseOfViolation.Items.Add(check,true);
+                    }
                 }
 
                 string is_there_follow_up = dgvHistory.CurrentRow.Cells[10].Value.ToString();
@@ -237,10 +246,8 @@ namespace Interface
 
         private void ClearCheckedTheListBox()
         {
-            foreach (int index in clbCaseOfViolation.CheckedIndices)
-            {
-                clbCaseOfViolation.SetItemChecked(index, false);
-            }
+            clbCaseOfViolation.Items.Clear();
+            ToFillInCheckListBox();
         }
 
         private void cbRows_SelectedIndexChanged(object sender, EventArgs e)
