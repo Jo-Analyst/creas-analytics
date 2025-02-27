@@ -1,5 +1,6 @@
 ﻿using DataBase;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -9,7 +10,7 @@ namespace Interface.Views
     {
         int pageMaximum = 1, page = 1;
         string monthCompleted;
-        DataTable tbCaseVioliations;
+        List<String> listCaseVioliations = new List<string>();
 
         public FrmReportService()
         {
@@ -81,10 +82,10 @@ namespace Interface.Views
                 int quantRows = int.Parse(cbRows.Text);
                 int pageSelected = (page - 1) * quantRows;
 
-                DataTable dt = cbxAll.Checked ? PaefiService.FindByAll(pageSelected, quantRows) : PaefiService.FindByPeriod(cbMonth.Text, cbYear.Text, pageSelected, quantRows);
-                tbCaseVioliations = !cbxAll.Checked ? PaefiService.GetQuantityCaseOfViolation(cbMonth.Text, cbYear.Text) : PaefiService.GetQuantityCaseOfViolation();
-
+                DataTable dt = cbxAll.Checked ? PaefiService.FindByAll(pageSelected, quantRows) : PaefiService.FindByPeriod(cbMonth.Text, cbYear.Text, pageSelected, quantRows);          
+               
                 dgvReport.Rows.Clear();
+                listCaseVioliations.Clear();
                 foreach (DataRow dr in dt.Rows)
                 {
                     int index = dgvReport.Rows.Add();
@@ -104,9 +105,17 @@ namespace Interface.Views
                     dgvReport.Rows[index].Cells[13].Value = dr["interventions_performed"].ToString();
                     dgvReport.Rows[index].Cells[14].Value = dr["referrals_made"].ToString();
                     dgvReport.Rows[index].Cells[15].Value = dr["summary_description_of_the_case"].ToString();
+                  
 
                     dgvReport.Rows[index].Height = 45;
                     dgvReport.Rows[index].Selected = false;
+                }
+
+                DataTable dataTable = cbxAll.Checked ? PaefiService.FindByAll() : PaefiService.FindByPeriod(cbMonth.Text, cbYear.Text);
+
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    listCaseVioliations.Add(dr["case_of_violation"].ToString());
                 }
             }
             catch (Exception)
@@ -316,7 +325,7 @@ namespace Interface.Views
 
         private void btnGenerateChart_Click(object sender, EventArgs e)
         {
-            new FrmChart(tbCaseVioliations).ShowDialog();
+            new FrmChart(listCaseVioliations).ShowDialog();
         }
 
         private void FrmReportService_KeyDown(object sender, KeyEventArgs e)
