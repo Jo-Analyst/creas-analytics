@@ -9,6 +9,7 @@ namespace Interface.Views
     {
         int pageMaximum = 1, page = 1;
         string monthCompleted;
+        DataTable tbCaseVioliations;
 
         public FrmReportService()
         {
@@ -81,6 +82,7 @@ namespace Interface.Views
                 int pageSelected = (page - 1) * quantRows;
 
                 DataTable dt = cbxAll.Checked ? PaefiService.FindByAll(pageSelected, quantRows) : PaefiService.FindByPeriod(cbMonth.Text, cbYear.Text, pageSelected, quantRows);
+                tbCaseVioliations = !cbxAll.Checked ? PaefiService.GetQuantityCaseOfViolation(cbMonth.Text, cbYear.Text) : PaefiService.GetQuantityCaseOfViolation();
 
                 dgvReport.Rows.Clear();
                 foreach (DataRow dr in dt.Rows)
@@ -314,7 +316,7 @@ namespace Interface.Views
 
         private void btnGenerateChart_Click(object sender, EventArgs e)
         {
-            new FrmChart().ShowDialog();
+            new FrmChart(tbCaseVioliations).ShowDialog();
         }
 
         private void FrmReportService_KeyDown(object sender, KeyEventArgs e)
