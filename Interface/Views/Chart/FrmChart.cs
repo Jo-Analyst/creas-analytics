@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace Interface.Views
         {
             InitializeComponent();
             this.caseViolations = caseVioliation;
+            CreateBarChart();
         }
 
         private void FrmChart_KeyDown(object sender, KeyEventArgs e)
@@ -29,53 +31,66 @@ namespace Interface.Views
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-
+            string tempFilePath = Path.Combine(Path.GetTempPath(), "barChartImage.png");
+            chart.SaveImage(tempFilePath, ChartImageFormat.Png);
         }
 
-        private void FrmChart_Load(object sender, EventArgs e)
+        private void CreateBarChart()
         {
-            Series series = new Series();
-            series.Name = "Casos de Violências";
-            series.Color = Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(114)))), ((int)(((byte)(30)))));
-            List<string[]> listCaseViolations = new List<string[]>();
+            //Series series = new Series{
+            //    IsValueShownAsLabel = true, // Mostra os valores nas fatias
+            //    ChartType = SeriesChartType.Bar
+            //};
 
+            Series series = new Series();
+
+            series.Name = "Casos de Violência";
+            series.Color = Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(114)))), ((int)(((byte)(30)))));
+          
+            chart.ChartAreas["ChartArea1"].AxisY.Title = "Quantidade de casos de violência";
+            chart.ChartAreas["ChartArea1"].AxisY.TitleFont = new Font("Arial", 10, FontStyle.Bold);
+
+            chart.ChartAreas["ChartArea1"].AxisX.Title = "Violação de direito associada ao atendimento";
+            chart.ChartAreas["ChartArea1"].AxisX.TitleFont = new Font("Arial", 10, FontStyle.Bold);
+
+            List<string[]> listCaseViolations = new List<string[]>();
+            
             foreach (var row in caseViolations)
             {
                 listCaseViolations.Add(row.ToString().Split(';'));
             }
-        
+
             List<string> newList = new List<string>();
-            
+
             foreach (var listCaseViolation in listCaseViolations)
             {
-                foreach(var list in listCaseViolation)
+                foreach (var list in listCaseViolation)
                 {
                     if (!string.IsNullOrEmpty(list))
                         newList.Add(list);
                 }
             }
-            DataTable dtCaseViolations  = new DataTable();
+
+
+            DataTable dtCaseViolations = new DataTable();
             dtCaseViolations.Columns.Add("Quantity", typeof(int));
             dtCaseViolations.Columns.Add("Case_Of_Violation", typeof(string));
 
-            // Suponha que os itens já estejam no newList
             foreach (string item in newList)
             {
                 bool itemExists = false;
 
-                // Verificar se o item já existe no DataTable
                 foreach (DataRow row in dtCaseViolations.Rows)
                 {
                     if (row["Case_Of_Violation"].ToString().Trim().ToLower() == item.Trim().ToLower())
                     {
-                        // Incrementar a quantidade
+                      
                         row["Quantity"] = (int)row["Quantity"] + 1;
                         itemExists = true;
                         break;
                     }
                 }
 
-                // Se o item não existe, adicioná-lo no DataTable
                 if (!itemExists)
                 {
                     DataRow newRow = dtCaseViolations.NewRow();
