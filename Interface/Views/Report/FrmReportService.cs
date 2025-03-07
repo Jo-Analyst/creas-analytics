@@ -173,8 +173,8 @@ namespace Interface.Views
         {
             if (!cbxAll.Checked)
             {
-                SelectedMonthTheCbMonth();
                 cbYear.Text = DateTime.Now.Year.ToString();
+                SelectedMonthTheCbMonth();
             }
             else
             {
