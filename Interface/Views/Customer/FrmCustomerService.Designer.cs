@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomerService));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
@@ -44,8 +44,6 @@
             this.rbDistance = new System.Windows.Forms.RadioButton();
             this.txtSummaryOfDemand = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtEntranceDoor = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clbCaseOfViolation = new System.Windows.Forms.CheckedListBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -93,6 +91,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.cbEntranceDoor = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -226,26 +226,6 @@
             this.label1.TabIndex = 56;
             this.label1.Text = "Sintese da demanda";
             // 
-            // txtEntranceDoor
-            // 
-            this.txtEntranceDoor.Location = new System.Drawing.Point(28, 286);
-            this.txtEntranceDoor.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEntranceDoor.MaxLength = 200;
-            this.txtEntranceDoor.Name = "txtEntranceDoor";
-            this.txtEntranceDoor.Size = new System.Drawing.Size(190, 26);
-            this.txtEntranceDoor.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(24, 264);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 18);
-            this.label3.TabIndex = 58;
-            this.label3.Text = "Porta de entrada";
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -253,9 +233,9 @@
             this.groupBox2.Controls.Add(this.clbCaseOfViolation);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(27, 331);
+            this.groupBox2.Location = new System.Drawing.Point(27, 385);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(656, 155);
+            this.groupBox2.Size = new System.Drawing.Size(656, 101);
             this.groupBox2.TabIndex = 56;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Principal violação de direito";
@@ -270,7 +250,7 @@
             this.clbCaseOfViolation.FormattingEnabled = true;
             this.clbCaseOfViolation.Location = new System.Drawing.Point(3, 22);
             this.clbCaseOfViolation.Name = "clbCaseOfViolation";
-            this.clbCaseOfViolation.Size = new System.Drawing.Size(650, 130);
+            this.clbCaseOfViolation.Size = new System.Drawing.Size(650, 76);
             this.clbCaseOfViolation.TabIndex = 0;
             this.clbCaseOfViolation.TabStop = false;
             this.clbCaseOfViolation.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
@@ -365,12 +345,11 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(438, 222);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(213, 18);
+            this.label4.Size = new System.Drawing.Size(216, 18);
             this.label4.TabIndex = 61;
             this.label4.Text = "Encaminhamentos realizados\t";
             // 
@@ -567,14 +546,14 @@
             this.dgvHistory.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
             this.dgvHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvHistory.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHistory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dgvHistory.ColumnHeadersHeight = 40;
             this.dgvHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColEdit,
@@ -592,28 +571,28 @@
             this.Column11,
             this.Column8,
             this.Column9});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvHistory.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvHistory.DefaultCellStyle = dataGridViewCellStyle19;
             this.dgvHistory.EnableHeadersVisualStyles = false;
             this.dgvHistory.Location = new System.Drawing.Point(3, 22);
             this.dgvHistory.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvHistory.MultiSelect = false;
             this.dgvHistory.Name = "dgvHistory";
             this.dgvHistory.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvHistory.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvHistory.RowHeadersVisible = false;
             this.dgvHistory.RowHeadersWidth = 51;
             this.dgvHistory.Size = new System.Drawing.Size(480, 435);
@@ -643,9 +622,9 @@
             // ColDate
             // 
             this.ColDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.ColDate.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Format = "d";
+            dataGridViewCellStyle18.NullValue = null;
+            this.ColDate.DefaultCellStyle = dataGridViewCellStyle18;
             this.ColDate.HeaderText = "Data";
             this.ColDate.Name = "ColDate";
             this.ColDate.ReadOnly = true;
@@ -760,18 +739,18 @@
             // 
             // txtTypeBenefits
             // 
-            this.txtTypeBenefits.Location = new System.Drawing.Point(226, 286);
+            this.txtTypeBenefits.Location = new System.Drawing.Point(26, 286);
             this.txtTypeBenefits.Margin = new System.Windows.Forms.Padding(4);
             this.txtTypeBenefits.MaxLength = 200;
             this.txtTypeBenefits.Name = "txtTypeBenefits";
-            this.txtTypeBenefits.Size = new System.Drawing.Size(193, 26);
+            this.txtTypeBenefits.Size = new System.Drawing.Size(393, 26);
             this.txtTypeBenefits.TabIndex = 7;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(227, 264);
+            this.label11.Location = new System.Drawing.Point(27, 264);
             this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(137, 18);
@@ -809,12 +788,51 @@
             this.lblStatus.Size = new System.Drawing.Size(0, 18);
             this.lblStatus.TabIndex = 71;
             // 
+            // cbEntranceDoor
+            // 
+            this.cbEntranceDoor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            this.cbEntranceDoor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbEntranceDoor.ForeColor = System.Drawing.Color.White;
+            this.cbEntranceDoor.FormattingEnabled = true;
+            this.cbEntranceDoor.Items.AddRange(new object[] {
+            "Demanda espontânea",
+            "Disque 100",
+            "Disque 156",
+            "Disque 180",
+            "Encaminhamento pela PSB (CRAS; Núcleos de SCFV;etc;)",
+            "Encaminhamento pela PSE/AC (Acolhimento Institucional; Casa Lar; Família acolhedo" +
+                "ra; Serviço de Proteção em Situações de Calamidade;etc;)",
+            "Encaminhamento pela área de Saúde",
+            "Encaminhamento pela área de Educação",
+            "Encaminhamento pelo Sistema de Justiça (TJ; MP; Defensoria Pública; etc.)",
+            "Encaminhamento pelo Conselho Tutelar",
+            "Encaminhamento pela Segurança Pública (PM; Delegacias; etc.)",
+            "Outros encaminhamentos"});
+            this.cbEntranceDoor.Location = new System.Drawing.Point(26, 343);
+            this.cbEntranceDoor.Name = "cbEntranceDoor";
+            this.cbEntranceDoor.Size = new System.Drawing.Size(654, 26);
+            this.cbEntranceDoor.TabIndex = 74;
+            this.cbEntranceDoor.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(23, 321);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 18);
+            this.label3.TabIndex = 73;
+            this.label3.Text = "Porta de entrada";
+            // 
             // FrmCustomerService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
             this.ClientSize = new System.Drawing.Size(1188, 548);
+            this.Controls.Add(this.cbEntranceDoor);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.txtInterventionsPerformed);
             this.Controls.Add(this.label12);
@@ -831,8 +849,6 @@
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.txtEntranceDoor);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSummaryOfDemand);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -878,8 +894,6 @@
         private System.Windows.Forms.RadioButton rbPresence;
         private System.Windows.Forms.TextBox txtSummaryOfDemand;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtEntranceDoor;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckedListBox clbCaseOfViolation;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -927,5 +941,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.ComboBox cbEntranceDoor;
+        private System.Windows.Forms.Label label3;
     }
 }

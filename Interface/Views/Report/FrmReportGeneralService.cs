@@ -6,13 +6,13 @@ using System.Windows.Forms;
 
 namespace Interface.Views
 {
-    public partial class FrmReportService : Form
+    public partial class FrmReportGeneralService : Form
     {
         int pageMaximum = 1, page = 1;
         string monthCompleted;
         List<String> listCaseVioliations = new List<string>();
 
-        public FrmReportService()
+        public FrmReportGeneralService()
         {
             InitializeComponent();
         }

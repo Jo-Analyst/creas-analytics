@@ -19,7 +19,7 @@ namespace Interface
 
         private void ServiceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new FrmReportService().ShowDialog();
+            new FrmReportGeneralService().ShowDialog();
         }
 
         private void BackupToolStripMenuItem_Click(object sender, EventArgs e)
@@ -30,6 +30,11 @@ namespace Interface
         private void MenuSetting_Click(object sender, EventArgs e)
         {
             new FrmSetting().ShowDialog();
+        }
+
+        private void violaçõesDeDireitoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

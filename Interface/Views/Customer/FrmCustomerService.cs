@@ -71,7 +71,7 @@ namespace Interface
                 paefiService.dateInsertion = dtDate.Value;
                 paefiService.insertionInPaefi = txtInsertionInPaefi.Text.Trim();
                 paefiService.summaryDescriptionOfTheCase = txtDescription.Text.Trim();
-                paefiService.entranceDoor = txtEntranceDoor.Text.Trim();
+                paefiService.entranceDoor = cbEntranceDoor.Text.Trim();
                 paefiService.interventionsPerformed = txtInterventionsPerformed.Text.Trim();
                 paefiService.typeOfBenefit = txtTypeBenefits.Text.Trim();
                 paefiService.referralsMade = txtReferralsMade.Text.Trim();
@@ -156,7 +156,7 @@ namespace Interface
 
         private bool IsValidateFields()
         {
-            return !string.IsNullOrWhiteSpace(txtInsertionInPaefi.Text) || !string.IsNullOrWhiteSpace(txtDescription.Text) || !string.IsNullOrWhiteSpace(txtEntranceDoor.Text) || !string.IsNullOrWhiteSpace(txtReferralsMade.Text) || !string.IsNullOrWhiteSpace(txtSummaryOfDemand.Text) || !string.IsNullOrWhiteSpace(txtTypeBenefits.Text);
+            return !string.IsNullOrWhiteSpace(txtInsertionInPaefi.Text) || !string.IsNullOrWhiteSpace(txtDescription.Text) || !string.IsNullOrWhiteSpace(cbEntranceDoor.Text) || !string.IsNullOrWhiteSpace(txtReferralsMade.Text) || !string.IsNullOrWhiteSpace(txtSummaryOfDemand.Text) || !string.IsNullOrWhiteSpace(txtTypeBenefits.Text);
         }
 
         private void dgvHistory_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -185,7 +185,7 @@ namespace Interface
                 }
 
                 txtSummaryOfDemand.Text = dgvHistory.CurrentRow.Cells[6].Value.ToString();
-                txtEntranceDoor.Text = dgvHistory.CurrentRow.Cells[7].Value.ToString();
+                cbEntranceDoor.Text = dgvHistory.CurrentRow.Cells[7].Value.ToString();
                 txtTypeBenefits.Text = dgvHistory.CurrentRow.Cells[8].Value.ToString();
 
                 var caseOfViolation = dgvHistory.CurrentRow.Cells[9].Value.ToString().Split(';');
@@ -388,7 +388,7 @@ namespace Interface
         private void ClearFields()
         {
             txtDescription.Clear();
-            txtEntranceDoor.Clear();
+            cbEntranceDoor.SelectedIndex = -1;
             txtInsertionInPaefi.Clear();
             txtInterventionsPerformed.Clear();
             txtReferralsMade.Clear();
