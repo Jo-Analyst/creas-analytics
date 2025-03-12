@@ -104,6 +104,12 @@
     <Compile Include="Views\FrmCreasAnalystics.Designer.cs">
       <DependentUpon>FrmCreasAnalystics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Report\FrmReportGeneralServiceCopy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Report\FrmReportGeneralServiceCopy.Designer.cs">
+      <DependentUpon>FrmReportGeneralServiceCopy.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Report\FrmReportGeneralService.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     <EmbeddedResource Include="Views\FrmCreasAnalystics.resx">
       <DependentUpon>FrmCreasAnalystics.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Report\FrmReportGeneralServiceCopy.resx">
+      <DependentUpon>FrmReportGeneralServiceCopy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Report\FrmReportGeneralService.resx">
       <DependentUpon>FrmReportGeneralService.cs</DependentUpon>
