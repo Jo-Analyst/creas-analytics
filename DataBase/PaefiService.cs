@@ -251,6 +251,30 @@ namespace DataBase
 
             return table;
         }
+        
+        static public DataTable GetQuantityService(int year)
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
+                {
+                    string query = $"SELECT COUNT(type_of_service) AS quantity, FORMAT(CAST(date_insertion AS DATE), 'MMMM') AS month_insertion, type_of_service FROM Paefi_services WHERE YEAR(CAST(date_insertion AS DATE)) = {year} GROUP BY FORMAT(CAST(date_insertion AS DATE), 'MMMM'), type_of_service order by month_insertion, type_of_service;";
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                    {
+                        connection.Open();
+                        adapter.Fill(table);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return table;
+        }
 
         public static double CountQuantityServices(int userId = 0)
         {
