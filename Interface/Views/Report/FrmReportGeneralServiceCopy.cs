@@ -25,15 +25,15 @@ namespace Interface.Views
                 cbYear.Items.Add(i.ToString());
             }
 
-            cbMonth.SelectedIndex = 0;
-            cbxAll_CheckedChanged(sender, e);
-            LoadData();           
+            cbYear.SelectedIndex = 0;
+            //cbxAll_CheckedChanged(sender, e);
+            LoadData();
         }
 
         private void LoadEvents()
         {
             LoadData();
-        }      
+        }
 
         private void LoadData()
         {
@@ -41,48 +41,84 @@ namespace Interface.Views
             {
                 dgvReport.Rows.Clear();
                 listCaseVioliations.Clear();
+                DataTable dtGeneralService = PaefiService.GetQuantityService(int.Parse(cbYear.Text));
 
-                if (cbxAll.Checked)
-                {
-                    for (int i = 0; i <= 11; i++)
-                    {
-                        dgvReport.Rows.Add();
-                        dgvReport.Rows[i].Cells[0].Value = new DateTime(DateTime.Now.Year, i + 1, 1).ToString("MMMM").ToUpper();
-                        dgvReport.Rows[i].Height = 45;
-                        dgvReport.Rows[i].Selected = false;
-                    }
-                }
-                else
+                for (int i = 0; i <= 11; i++)
                 {
                     dgvReport.Rows.Add();
-                    dgvReport.Rows[0].Cells[0].Value = monthCompleted.ToUpper();
-                    dgvReport.Rows[0].Height = 45;
-                    dgvReport.Rows[0].Selected = false;
+                    dgvReport.Rows[i].Cells[0].Value = new DateTime(DateTime.Now.Year, i + 1, 1).ToString("MMMM").ToUpper();
+                    dgvReport.Rows[i].Cells[1].Value = 0;
+                    dgvReport.Rows[i].Cells[2].Value = 0;
+                    dgvReport.Rows[i].Cells[3].Value = 0;
+                    var test = teste(dtGeneralService, dgvReport.Rows[i].Cells[0].Value.ToString());
+                    dgvReport.Rows[i].Cells[1].Value = test.quantityPresence.ToString();
+                    dgvReport.Rows[i].Cells[2].Value = test.quantityDistance.ToString();
+                    dgvReport.Rows[i].Cells[3].Value = test.quantityHomeVisity.ToString();
+                    dgvReport.Rows[i].Height = 45;
+                    dgvReport.Rows[i].Selected = false;
                 }
+
+                //teste();
             }
             catch (Exception)
             {
                 MessageBox.Show("Houve um erro no sistema. Tente novamente", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-      
-        private void cbxAll_CheckedChanged(object sender, EventArgs e)
+
+
+
+        private (int quantityDistance, int quantityHomeVisity, int quantityPresence) teste(DataTable dtGeneralService, string month)
         {
-            if (!cbxAll.Checked)
+            int quantityDistance = 0, quantityHomeVisity = 0, quantityPresence = 0;
+            Dictionary<string, int> monthIndex = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
             {
-                cbYear.Text = DateTime.Now.Year.ToString();
-                SelectedMonthTheCbMonth();
-                GetMonthByIndex();
-            }
-            else
+            { "janeiro", 0 },
+            { "fevereiro", 1 },
+            { "março", 2 },
+            { "abril", 3 },
+            { "maio", 4 },
+            { "junho", 5 },
+            { "julho", 6 },
+            { "agosto", 7 },
+            { "setembro", 8 },
+            { "outubro", 9 },
+            { "novembro", 10 },
+            { "dezembro", 11},
+            };
+
+            if (!monthIndex.ContainsKey(month))
             {
-                cbMonth.SelectedIndex = -1;
-                cbYear.SelectedIndex = -1;
+                throw new ArgumentException("Mês inválido fornecido.", nameof(month));
             }
 
-            cbMonth.Enabled = !cbxAll.Checked;
-            cbYear.Enabled = !cbxAll.Checked;
+            int rowIndex = monthIndex[month];
+
+            foreach (DataRow dt in dtGeneralService.Rows)
+            {
+                string typeOfService = dt["type_of_service"].ToString();
+
+                if (dt["month_insertion"].ToString().ToLower() == month.ToLower())
+                { 
+                    switch (typeOfService)
+                    {
+                        case "Presencial":
+                            quantityPresence = Convert.ToInt32(dt["quantity"]);
+                            break;
+                        case "A distância":
+                            quantityDistance = Convert.ToInt32(dt["quantity"]);
+                            break;
+                        case "Visita domiciliar":
+                            quantityHomeVisity= Convert.ToInt32(dt["quantity"]);
+                            break;
+                    }
+                }
+            } 
+
+            // Retorne as quantidades calculadas
+            return (quantityDistance, quantityHomeVisity, quantityPresence);
         }
+
 
         private void SelectedMonthTheCbMonth()
         {
@@ -162,8 +198,8 @@ namespace Interface.Views
 
         private void cbYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //LoadEvents();
-        }     
+            LoadEvents();
+        }
 
         private void btnGenerateChart_Click(object sender, EventArgs e)
         {
@@ -173,7 +209,7 @@ namespace Interface.Views
         private void FrmReportService_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.G)
-                btnGenerateChart_Click(sender, e);            
+                btnGenerateChart_Click(sender, e);
         }
     }
 }

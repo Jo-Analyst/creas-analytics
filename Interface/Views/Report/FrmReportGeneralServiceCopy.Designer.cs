@@ -29,25 +29,23 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportGeneralServiceCopy));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvReport = new System.Windows.Forms.DataGridView();
+            this.ColMonths = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColInPersonAssistanceToUsers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColVirtualAssistance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColHomeVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbxAll = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbYear = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbMonth = new System.Windows.Forms.ComboBox();
             this.btnGenerateChart = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.ColMonths = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColInPersonAssistanceToUsers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColVirtualAssistance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColHomeVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -64,54 +62,91 @@
             this.dgvReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
             this.dgvReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvReport.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvReport.ColumnHeadersHeight = 40;
             this.dgvReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColMonths,
             this.ColInPersonAssistanceToUsers,
             this.ColVirtualAssistance,
             this.ColHomeVisit});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReport.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReport.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvReport.EnableHeadersVisualStyles = false;
             this.dgvReport.Location = new System.Drawing.Point(14, 95);
             this.dgvReport.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvReport.MultiSelect = false;
             this.dgvReport.Name = "dgvReport";
             this.dgvReport.ReadOnly = true;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReport.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReport.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvReport.RowHeadersVisible = false;
             this.dgvReport.RowHeadersWidth = 51;
             this.dgvReport.Size = new System.Drawing.Size(701, 366);
             this.dgvReport.TabIndex = 1;
             this.dgvReport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReport_CellClick);
             // 
+            // ColMonths
+            // 
+            this.ColMonths.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.ColMonths.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColMonths.HeaderText = "Meses";
+            this.ColMonths.Name = "ColMonths";
+            this.ColMonths.ReadOnly = true;
+            this.ColMonths.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColMonths.Width = 56;
+            // 
+            // ColInPersonAssistanceToUsers
+            // 
+            this.ColInPersonAssistanceToUsers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColInPersonAssistanceToUsers.HeaderText = "Atendimentos Presenciais a usuários";
+            this.ColInPersonAssistanceToUsers.Name = "ColInPersonAssistanceToUsers";
+            this.ColInPersonAssistanceToUsers.ReadOnly = true;
+            this.ColInPersonAssistanceToUsers.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColInPersonAssistanceToUsers.Width = 236;
+            // 
+            // ColVirtualAssistance
+            // 
+            this.ColVirtualAssistance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColVirtualAssistance.HeaderText = "Atendimentos Virtuais (Telefone ou Video) a USUÁRIOS";
+            this.ColVirtualAssistance.Name = "ColVirtualAssistance";
+            this.ColVirtualAssistance.ReadOnly = true;
+            this.ColVirtualAssistance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColVirtualAssistance.Width = 349;
+            // 
+            // ColHomeVisit
+            // 
+            this.ColHomeVisit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColHomeVisit.HeaderText = "Visita domiciliar";
+            this.ColHomeVisit.Name = "ColHomeVisit";
+            this.ColHomeVisit.ReadOnly = true;
+            this.ColHomeVisit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColHomeVisit.Width = 127;
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cbxAll);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cbYear);
             this.groupBox1.Controls.Add(this.label1);
@@ -125,34 +160,10 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtrar por:";
             // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label4.Location = new System.Drawing.Point(88, 15);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(1, 53);
-            this.label4.TabIndex = 22;
-            // 
-            // cbxAll
-            // 
-            this.cbxAll.AutoSize = true;
-            this.cbxAll.Checked = true;
-            this.cbxAll.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbxAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbxAll.Location = new System.Drawing.Point(21, 29);
-            this.cbxAll.Name = "cbxAll";
-            this.cbxAll.Size = new System.Drawing.Size(55, 24);
-            this.cbxAll.TabIndex = 21;
-            this.cbxAll.Text = "Tudo";
-            this.cbxAll.UseVisualStyleBackColor = true;
-            this.cbxAll.CheckedChanged += new System.EventHandler(this.cbxAll_CheckedChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(280, 31);
+            this.label2.Location = new System.Drawing.Point(10, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 20);
             this.label2.TabIndex = 20;
@@ -162,20 +173,20 @@
             // 
             this.cbYear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
             this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbYear.Enabled = false;
             this.cbYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbYear.ForeColor = System.Drawing.Color.White;
             this.cbYear.FormattingEnabled = true;
-            this.cbYear.Location = new System.Drawing.Point(321, 28);
+            this.cbYear.Location = new System.Drawing.Point(51, 31);
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(94, 28);
             this.cbYear.TabIndex = 19;
             this.cbYear.TabStop = false;
+            this.cbYear.SelectedIndexChanged += new System.EventHandler(this.cbYear_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(115, 31);
+            this.label1.Location = new System.Drawing.Point(151, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 20);
             this.label1.TabIndex = 18;
@@ -185,7 +196,6 @@
             // 
             this.cbMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(59)))), ((int)(((byte)(82)))));
             this.cbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMonth.Enabled = false;
             this.cbMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbMonth.ForeColor = System.Drawing.Color.White;
             this.cbMonth.FormattingEnabled = true;
@@ -203,7 +213,7 @@
             "OUT",
             "NOV",
             "DEZ"});
-            this.cbMonth.Location = new System.Drawing.Point(156, 28);
+            this.cbMonth.Location = new System.Drawing.Point(192, 28);
             this.cbMonth.Name = "cbMonth";
             this.cbMonth.Size = new System.Drawing.Size(118, 28);
             this.cbMonth.TabIndex = 17;
@@ -230,45 +240,6 @@
             this.toolTip.SetToolTip(this.btnGenerateChart, "Gerar gráfico - CTRL + G");
             this.btnGenerateChart.UseVisualStyleBackColor = true;
             this.btnGenerateChart.Click += new System.EventHandler(this.btnGenerateChart_Click);
-            // 
-            // ColMonths
-            // 
-            this.ColMonths.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle18.Format = "d";
-            dataGridViewCellStyle18.NullValue = null;
-            this.ColMonths.DefaultCellStyle = dataGridViewCellStyle18;
-            this.ColMonths.HeaderText = "Meses";
-            this.ColMonths.Name = "ColMonths";
-            this.ColMonths.ReadOnly = true;
-            this.ColMonths.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColMonths.Width = 64;
-            // 
-            // ColInPersonAssistanceToUsers
-            // 
-            this.ColInPersonAssistanceToUsers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColInPersonAssistanceToUsers.HeaderText = "Atendimentos Presenciais a usuários";
-            this.ColInPersonAssistanceToUsers.Name = "ColInPersonAssistanceToUsers";
-            this.ColInPersonAssistanceToUsers.ReadOnly = true;
-            this.ColInPersonAssistanceToUsers.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColInPersonAssistanceToUsers.Width = 298;
-            // 
-            // ColVirtualAssistance
-            // 
-            this.ColVirtualAssistance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColVirtualAssistance.HeaderText = "Atendimentos Virtuais (Telefone ou Video) a USUÁRIOS";
-            this.ColVirtualAssistance.Name = "ColVirtualAssistance";
-            this.ColVirtualAssistance.ReadOnly = true;
-            this.ColVirtualAssistance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColVirtualAssistance.Width = 436;
-            // 
-            // ColHomeVisit
-            // 
-            this.ColHomeVisit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColHomeVisit.HeaderText = "Visita domiciliar";
-            this.ColHomeVisit.Name = "ColHomeVisit";
-            this.ColHomeVisit.ReadOnly = true;
-            this.ColHomeVisit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ColHomeVisit.Width = 154;
             // 
             // FrmReportGeneralServiceCopy
             // 
@@ -306,8 +277,6 @@
         private System.Windows.Forms.ComboBox cbYear;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbMonth;
-        private System.Windows.Forms.CheckBox cbxAll;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnGenerateChart;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColMonths;
