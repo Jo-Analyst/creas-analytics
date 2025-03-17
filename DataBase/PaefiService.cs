@@ -155,7 +155,7 @@ namespace DataBase
             }
 
             return table;
-        } 
+        }
         static public DataTable FindByAll(int page = 0, int quantRows = 5)
         {
             DataTable table = new DataTable();
@@ -202,8 +202,8 @@ namespace DataBase
             }
 
             return table;
-        } 
-        
+        }
+
         static public DataTable GetQuantityCaseOfViolation()
         {
             DataTable table = new DataTable();
@@ -226,8 +226,8 @@ namespace DataBase
             }
 
             return table;
-        }  
-        
+        }
+
         static public DataTable GetQuantityCaseOfViolation(string month, string year)
         {
             DataTable table = new DataTable();
@@ -251,7 +251,7 @@ namespace DataBase
 
             return table;
         }
-        
+
         static public DataTable GetQuantityService(int year)
         {
             DataTable table = new DataTable();

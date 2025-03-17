@@ -20,7 +20,7 @@ namespace Interface
         private void ServiceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //new FrmReportGeneralService().ShowDialog();
-            new FrmReportGeneralServiceCopy().ShowDialog();
+            new FrmReportGeneralService().ShowDialog();
         }
 
         private void BackupToolStripMenuItem_Click(object sender, EventArgs e)

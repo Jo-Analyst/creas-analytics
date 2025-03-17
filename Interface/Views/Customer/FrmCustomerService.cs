@@ -1,11 +1,9 @@
 ﻿using DataBase;
 using Interface.Properties;
-using Microsoft.ReportingServices.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
 namespace Interface
 {
@@ -199,9 +197,9 @@ namespace Interface
                     {
                         clbCaseOfViolation.SetItemChecked(index, true);
                     }
-                    else if(!string.IsNullOrWhiteSpace(check))
+                    else if (!string.IsNullOrWhiteSpace(check))
                     {
-                        clbCaseOfViolation.Items.Add(check,true);
+                        clbCaseOfViolation.Items.Add(check, true);
                     }
                 }
 

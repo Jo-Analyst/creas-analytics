@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -25,7 +21,7 @@ namespace Interface.Views
 
         private void FrmChart_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.P) 
+            if (e.Control && e.KeyCode == Keys.P)
                 btnPrint_Click(sender, e);
         }
 
@@ -45,8 +41,8 @@ namespace Interface.Views
             Series series = new Series();
 
             series.Name = "Casos de Violência";
-            series.Color = Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(114)))), ((int)(((byte)(30)))));
-          
+            series.Color = Color.FromArgb(220, 114, 30);
+
             chart.ChartAreas["ChartArea1"].AxisY.Title = "Quantidade de casos de violência";
             chart.ChartAreas["ChartArea1"].AxisY.TitleFont = new Font("Arial", 10, FontStyle.Bold);
 
@@ -54,7 +50,7 @@ namespace Interface.Views
             chart.ChartAreas["ChartArea1"].AxisX.TitleFont = new Font("Arial", 10, FontStyle.Bold);
 
             List<string[]> listCaseViolations = new List<string[]>();
-            
+
             foreach (var row in caseViolations)
             {
                 listCaseViolations.Add(row.ToString().Split(';'));
@@ -84,7 +80,7 @@ namespace Interface.Views
                 {
                     if (row["Case_Of_Violation"].ToString().Trim().ToLower() == item.Trim().ToLower())
                     {
-                      
+
                         row["Quantity"] = (int)row["Quantity"] + 1;
                         itemExists = true;
                         break;

@@ -1,7 +1,6 @@
 ﻿using Interface.Properties;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Interface
@@ -21,7 +20,7 @@ namespace Interface
             caseOfViolations = new List<string>(Settings.Default["caseOfViolations"].ToString().Split(';'));
             foreach (string caseOfViolation in caseOfViolations)
             {
-               InsertDataInDgv(caseOfViolation);
+                InsertDataInDgv(caseOfViolation);
             }
         }
 

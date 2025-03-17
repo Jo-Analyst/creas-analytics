@@ -8,7 +8,6 @@ namespace Interface.Views
 {
     public partial class FrmReportGeneralService : Form
     {
-        int pageMaximum = 1, page = 1;
         string monthCompleted;
         List<String> listCaseVioliations = new List<string>();
 
@@ -24,98 +23,68 @@ namespace Interface.Views
                 cbYear.Items.Add(i.ToString());
             }
 
-            cbPage.Text = "1";
-            cbRows.Text = "5";
-            cbxAll_CheckedChanged(sender, e);
-            this.cbRows.SelectedIndexChanged += cbRows_SelectedIndexChanged;
-            this.cbYear.SelectedIndexChanged += cbYear_SelectedIndexChanged;
-            this.cbPage.SelectedIndexChanged += new System.EventHandler(this.cbPage_SelectedIndexChanged);
-        }
-
-        private void cbPage_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            page = int.Parse(cbPage.Text);
-            if (pageMaximum == 1) return;
-
+            cbYear.SelectedIndex = 0;
+            cbMonth.SelectedIndex = 0;
             LoadData();
-
-            if (page == 1)
-            {
-                DisabledBtnArrowLeft();
-                EnabledBtnArrowRight();
-            }
-            else if (page == pageMaximum)
-            {
-                DisabledBtnArrowRight();
-                EnabledBtnArrowLeft();
-            }
-
-            else
-            {
-                EnabledBtnArrowLeft();
-                EnabledBtnArrowRight();
-            }
-        }
-
-        private void LoadEvents()
-        {
-            CheckNumberOfPages(int.Parse(cbRows.Text));
-            UpdateComboBoxItems();
-            LoadData();
-            UpdateUserDescription();
-        }
-
-        private void UpdateComboBoxItems()
-        {
-            cbPage.Items.Clear();
-            for (int i = 1; i <= pageMaximum; i++)
-            {
-                cbPage.Items.Add(i);
-            }
-            cbPage.Text = (page > pageMaximum ? pageMaximum : page).ToString();
         }
 
         private void LoadData()
         {
             try
             {
-                int quantRows = int.Parse(cbRows.Text);
-                int pageSelected = (page - 1) * quantRows;
-
-                DataTable dt = cbxAll.Checked ? PaefiService.FindByAll(pageSelected, quantRows) : PaefiService.FindByPeriod(cbMonth.Text, cbYear.Text, pageSelected, quantRows);          
-               
                 dgvReport.Rows.Clear();
                 listCaseVioliations.Clear();
-                foreach (DataRow dr in dt.Rows)
-                {
-                    int index = dgvReport.Rows.Add();
-                    dgvReport.Rows[index].Cells["ColDate"].Value = dr["date_insertion"].ToString();
-                    dgvReport.Rows[index].Cells["ColName"].Value = dr["name"].ToString();
-                    dgvReport.Rows[index].Cells["ColBirth"].Value = dr["birth"].ToString();
-                    dgvReport.Rows[index].Cells["ColReference"].Value = dr["family_reference"].ToString();
-                    dgvReport.Rows[index].Cells["ColAddress"].Value = $"{dr["address"].ToString()}, {dr["number_address"]}";
-                    dgvReport.Rows[index].Cells[5].Value = dr["insertion_in_PAEFI"].ToString();
-                    dgvReport.Rows[index].Cells[6].Value = dr["type_of_service"].ToString();
-                    dgvReport.Rows[index].Cells[7].Value = dr["summary_of_demand"].ToString();
-                    dgvReport.Rows[index].Cells[8].Value = dr["entrance_door"].ToString();
-                    dgvReport.Rows[index].Cells[9].Value = dr["type_of_benefit"].ToString();
-                    dgvReport.Rows[index].Cells[10].Value = dr["case_of_violation"].ToString();
-                    dgvReport.Rows[index].Cells[11].Value = dr["is_there_follow_up"].ToString() == "1" ? "Sim" : "Não";
-                    dgvReport.Rows[index].Cells[12].Value = dr["does_the_patient_have_special_needs"].ToString() == "1" ? "Sim" : "Não";
-                    dgvReport.Rows[index].Cells[13].Value = dr["interventions_performed"].ToString();
-                    dgvReport.Rows[index].Cells[14].Value = dr["referrals_made"].ToString();
-                    dgvReport.Rows[index].Cells[15].Value = dr["summary_description_of_the_case"].ToString();
-                  
+                DataTable dtGeneralServices = PaefiService.GetQuantityService(int.Parse(cbYear.Text));
 
-                    dgvReport.Rows[index].Height = 45;
-                    dgvReport.Rows[index].Selected = false;
+                if (cbMonth.SelectedIndex <= 0)
+                {
+                    int totalPresence = 0, totalDistance = 0, totalHomeVisity = 0;
+                    for (int i = 0; i <= 11; i++)
+                    {
+                        dgvReport.Rows.Add();
+                        dgvReport.Rows[i].Cells[0].Value = new DateTime(DateTime.Now.Year, i + 1, 1).ToString("MMMM").ToUpper();
+                        dgvReport.Rows[i].Cells[1].Value = 0;
+                        dgvReport.Rows[i].Cells[2].Value = 0;
+                        dgvReport.Rows[i].Cells[3].Value = 0;
+                        var service = GetServiceQuantitiesByMonth(dtGeneralServices, dgvReport.Rows[i].Cells[0].Value.ToString());
+                        dgvReport.Rows[i].Cells[1].Value = service.quantityPresence.ToString();
+                        dgvReport.Rows[i].Cells[2].Value = service.quantityDistance.ToString();
+                        dgvReport.Rows[i].Cells[3].Value = service.quantityHomeVisity.ToString();
+                        totalPresence += service.quantityPresence;
+                        totalDistance += service.quantityDistance;
+                        totalHomeVisity += service.quantityHomeVisity;
+
+                        dgvReport.Rows[i].Height = 45;
+                        dgvReport.Rows[i].Selected = false;
+                    }
+
+                    dgvReport.Rows.Add("TOTAL", totalPresence, totalDistance, totalHomeVisity);
+                    dgvReport.Rows[dgvReport.Rows.Count - 1].Height = 45;
+                    dgvReport.Rows[dgvReport.Rows.Count - 1].Selected = false;
                 }
-
-                DataTable dataTable = cbxAll.Checked ? PaefiService.FindByAll() : PaefiService.FindByPeriod(cbMonth.Text, cbYear.Text);
-
-                foreach (DataRow dr in dataTable.Rows)
+                else
                 {
-                    listCaseVioliations.Add(dr["case_of_violation"].ToString());
+                    dgvReport.Rows.Add();
+                    dgvReport.Rows[0].Cells[0].Value = monthCompleted.ToUpper();
+                    dgvReport.Rows[0].Height = 45;
+                    dgvReport.Rows[0].Selected = false;
+                    DataTable dtGeneralServiceByMonth = new DataTable();
+                    dtGeneralServiceByMonth.Columns.Add("quantity", typeof(string));
+                    dtGeneralServiceByMonth.Columns.Add("month_insertion", typeof(string));
+                    dtGeneralServiceByMonth.Columns.Add("type_of_service", typeof(string));
+                    GetMonthByIndex();
+                    foreach (DataRow row in dtGeneralServices.Rows)
+                    {
+                        if (row["month_insertion"].ToString().ToLower() == monthCompleted.ToLower())
+                        {
+                            dtGeneralServiceByMonth.Rows.Add(row["quantity"].ToString(), row["month_insertion"].ToString(), row["type_of_service"].ToString());
+                        }
+                    }
+
+                    var service = GetServiceQuantitiesByMonth(dtGeneralServiceByMonth, monthCompleted);
+                    dgvReport.Rows[0].Cells[1].Value = service.quantityPresence.ToString();
+                    dgvReport.Rows[0].Cells[2].Value = service.quantityDistance.ToString();
+                    dgvReport.Rows[0].Cells[3].Value = service.quantityHomeVisity.ToString();
                 }
             }
             catch (Exception)
@@ -124,66 +93,54 @@ namespace Interface.Views
             }
         }
 
-        private void CheckNumberOfPages(int numberRows)
+        private (int quantityDistance, int quantityHomeVisity, int quantityPresence) GetServiceQuantitiesByMonth(DataTable dtGeneralService, string month)
         {
-            try
+            int quantityDistance = 0, quantityHomeVisity = 0, quantityPresence = 0;
+            Dictionary<string, int> monthIndex = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
             {
-                PageData.quantityRowsSelected = numberRows;
-                pageMaximum = cbxAll.Checked ? PageData.SetPageQuantityServicesAll() : PageData.SetPageQuantityServicesByPeriod(cbMonth.Text, cbYear.Text);
-                if (pageMaximum > 1)
-                    EnabledBtnArrowRight();
-            }
-            catch (Exception)
+            { "janeiro", 0 },
+            { "fevereiro", 1 },
+            { "março", 2 },
+            { "abril", 3 },
+            { "maio", 4 },
+            { "junho", 5 },
+            { "julho", 6 },
+            { "agosto", 7 },
+            { "setembro", 8 },
+            { "outubro", 9 },
+            { "novembro", 10 },
+            { "dezembro", 11},
+            };
+
+            if (!monthIndex.ContainsKey(month))
             {
-                MessageBox.Show("Houve um erro no sistema. Tente novamente", "Notificação de aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private void DisabledBtnArrowLeft()
-        {
-            btnArrowLeft.Enabled = false;
-            btnArrowLeft.Image = Properties.Resources.left_arrow_grey;
-        }
-
-        private void DisabledBtnArrowRight()
-        {
-            btnArrowRight.Enabled = false;
-            btnArrowRight.Image = Properties.Resources.right_arrow_grey;
-        }
-
-        private void EnabledBtnArrowLeft()
-        {
-            btnArrowLeft.Enabled = true;
-            btnArrowLeft.Image = Properties.Resources.left_arrow_white;
-        }
-
-        private void EnabledBtnArrowRight()
-        {
-            btnArrowRight.Enabled = true;
-            btnArrowRight.Image = Properties.Resources.right_arrow_white;
-        }
-
-        private void UpdateUserDescription()
-        {
-            lblDescriptionRow.Text = cbxAll.Checked ? $"Exibindo {dgvReport.Rows.Count} de {PageData.quantity} atendimentos realizados" : $"Exibindo {dgvReport.Rows.Count} de {PageData.quantity} atendimentos realizados em {monthCompleted} de {cbYear.Text}";
-        }
-
-        private void cbxAll_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!cbxAll.Checked)
-            {
-                cbYear.Text = DateTime.Now.Year.ToString();
-                SelectedMonthTheCbMonth();
-            }
-            else
-            {
-                cbMonth.SelectedIndex = -1;
-                cbYear.SelectedIndex = -1;
+                throw new ArgumentException("Mês inválido fornecido.", nameof(month));
             }
 
-            cbMonth.Enabled = !cbxAll.Checked;
-            cbYear.Enabled = !cbxAll.Checked;
+            int rowIndex = monthIndex[month];
+
+            foreach (DataRow dt in dtGeneralService.Rows)
+            {
+                string typeOfService = dt["type_of_service"].ToString();
+
+                if (dt["month_insertion"].ToString().ToLower() == month.ToLower())
+                {
+                    switch (typeOfService)
+                    {
+                        case "Presencial":
+                            quantityPresence = Convert.ToInt32(dt["quantity"]);
+                            break;
+                        case "A distância":
+                            quantityDistance = Convert.ToInt32(dt["quantity"]);
+                            break;
+                        case "Visita domiciliar":
+                            quantityHomeVisity = Convert.ToInt32(dt["quantity"]);
+                            break;
+                    }
+                }
+            }
+
+            return (quantityDistance, quantityHomeVisity, quantityPresence);
         }
 
         private void SelectedMonthTheCbMonth()
@@ -222,30 +179,32 @@ namespace Interface.Views
         {
             switch (cbMonth.SelectedIndex)
             {
-                case 0:
-                    monthCompleted = "Janeiro"; break;
                 case 1:
-                    monthCompleted = "Fevereiro"; break;
+                    monthCompleted = "Janeiro"; break;
                 case 2:
-                    monthCompleted = "Março"; break;
+                    monthCompleted = "Fevereiro"; break;
                 case 3:
-                    monthCompleted = "Abril"; break;
+                    monthCompleted = "Março"; break;
                 case 4:
-                    monthCompleted = "Maio"; break;
+                    monthCompleted = "Abril"; break;
                 case 5:
-                    monthCompleted = "Junho"; break;
+                    monthCompleted = "Maio"; break;
                 case 6:
-                    monthCompleted = "Julho"; break;
+                    monthCompleted = "Junho"; break;
                 case 7:
-                    monthCompleted = "Agosto"; break;
+                    monthCompleted = "Julho"; break;
                 case 8:
-                    monthCompleted = "Setembro"; break;
+                    monthCompleted = "Agosto"; break;
                 case 9:
-                    monthCompleted = "Outubro"; break;
+                    monthCompleted = "Setembro"; break;
                 case 10:
-                    monthCompleted = "Novembro"; break;
+                    monthCompleted = "Outubro"; break;
                 case 11:
+                    monthCompleted = "Novembro"; break;
+                case 12:
                     monthCompleted = "Dezembro"; break;
+                default:
+                    monthCompleted = string.Empty; break;
             }
         }
 
@@ -257,70 +216,12 @@ namespace Interface.Views
         private void cbMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetMonthByIndex();
-            LoadEvents();
+            LoadData();
         }
 
         private void cbYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadEvents();
-        }
-
-        private void btnArrowRight_Click(object sender, EventArgs e)
-        {
-            if (page < pageMaximum)
-            {
-                page++;
-            }
-
-            cbPage.Text = page.ToString();
-
-            if (page == pageMaximum)
-            {
-
-                DisabledBtnArrowRight();
-
-            }
-
-            else
-            {
-                btnArrowLeft.Enabled = true;
-                btnArrowLeft.Image = Properties.Resources.left_arrow_white;
-
-            }
-
-            EnabledBtnArrowLeft();
             LoadData();
-        }
-
-        private void btnArrowLeft_Click(object sender, EventArgs e)
-        {
-            if (page > 1)
-            {
-                page--;
-            }
-
-            cbPage.Text = page.ToString();
-
-            if (page == 1)
-            {
-                DisabledBtnArrowLeft();
-                EnabledBtnArrowRight();
-            }
-            else
-            {
-                EnabledBtnArrowLeft();
-            }
-            LoadData();
-        }
-
-        private void cbRows_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadEvents();
-            if (page == pageMaximum)
-            {
-                DisabledBtnArrowLeft();
-                DisabledBtnArrowRight();
-            }
         }
 
         private void btnGenerateChart_Click(object sender, EventArgs e)
@@ -332,8 +233,6 @@ namespace Interface.Views
         {
             if (e.Control && e.KeyCode == Keys.G)
                 btnGenerateChart_Click(sender, e);
-            else if (e.Control && e.KeyCode == Keys.Right && btnArrowRight.Enabled) btnArrowRight_Click(sender, e);
-            else if (e.Control && e.KeyCode == Keys.Left && btnArrowLeft.Enabled) btnArrowLeft_Click(sender, e);
         }
     }
 }
