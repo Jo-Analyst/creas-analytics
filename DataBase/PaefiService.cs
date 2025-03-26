@@ -9,6 +9,7 @@ namespace DataBase
         public int id { get; set; }
         public string insertionInPaefi { get; set; }
         public string typeOfService { get; set; }
+        public string generalService { get; set; }
         public string summaryOfDemand { get; set; }
         public string caseOfViolation { get; set; }
         public string typeOfBenefit { get; set; }
@@ -26,13 +27,14 @@ namespace DataBase
             using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
             {
                 string query = id == 0
-                    ? "INSERT INTO paefi_services (insertion_in_PAEFI, type_of_service, summary_of_demand, case_of_violation, type_of_benefit, is_there_follow_up, does_the_patient_have_special_needs, interventions_performed, referrals_made, summary_description_of_the_case, user_id, date_insertion, entrance_door) VALUES (@insertion_in_PAEFI, @type_of_service, @summary_of_demand, @case_of_violation, @type_of_benefit, @is_there_follow_up, @does_the_patient_have_special_needs, @interventions_performed, @referrals_made, @summary_description_of_the_case, @user_id, @date_insertion, @entrance_door); SELECT @@IDENTITY"
-                    : "UPDATE Paefi_services SET insertion_in_PAEFI = @insertion_in_PAEFI, type_of_service = @type_of_service, summary_of_demand = @summary_of_demand, case_of_violation = @case_of_violation, type_of_benefit = @type_of_benefit, is_there_follow_up = @is_there_follow_up, does_the_patient_have_special_needs = @does_the_patient_have_special_needs, interventions_performed = @interventions_performed, referrals_made = @referrals_made, summary_description_of_the_case = @summary_description_of_the_case, user_id = @user_id, date_insertion = @date_insertion, entrance_door = @entrance_door WHERE id = @id";
+                    ? "INSERT INTO paefi_services (insertion_in_PAEFI, general_services, summary_of_demand, case_of_violation, type_of_benefit, is_there_follow_up, does_the_patient_have_special_needs, interventions_performed, referrals_made, summary_description_of_the_case, user_id, date_insertion, entrance_door, type_of_service) VALUES (@insertion_in_PAEFI, @general_services, @summary_of_demand, @case_of_violation, @type_of_benefit, @is_there_follow_up, @does_the_patient_have_special_needs, @interventions_performed, @referrals_made, @summary_description_of_the_case, @user_id, @date_insertion, @entrance_door, @type_of_service); SELECT @@IDENTITY"
+                    : "UPDATE Paefi_Services SET insertion_in_PAEFI = @insertion_in_PAEFI, general_services = @general_services, type_of_service = @type_of_service, summary_of_demand = @summary_of_demand, case_of_violation = @case_of_violation, type_of_benefit = @type_of_benefit, is_there_follow_up = @is_there_follow_up, does_the_patient_have_special_needs = @does_the_patient_have_special_needs, interventions_performed = @interventions_performed, referrals_made = @referrals_made, summary_description_of_the_case = @summary_description_of_the_case, user_id = @user_id, date_insertion = @date_insertion, entrance_door = @entrance_door WHERE id = @id";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@id", id);
                     command.Parameters.AddWithValue("@insertion_in_PAEFI", insertionInPaefi);
+                    command.Parameters.AddWithValue("@general_services", generalService);
                     command.Parameters.AddWithValue("@type_of_service", typeOfService);
                     command.Parameters.AddWithValue("@summary_of_demand", summaryOfDemand);
                     command.Parameters.AddWithValue("@entrance_door", entranceDoor);
@@ -63,7 +65,7 @@ namespace DataBase
         {
             using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
             {
-                string query = "DELETE FROM Paefi_services WHERE id = @id";
+                string query = "DELETE FROM Paefi_Services WHERE id = @id";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -89,16 +91,12 @@ namespace DataBase
             {
                 using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string query = $"SELECT id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, insertion_in_PAEFI, type_of_service, summary_of_demand, case_of_violation, type_of_benefit, is_there_follow_up, does_the_patient_have_special_needs, interventions_performed, referrals_made, summary_description_of_the_case, user_id, entrance_door FROM Paefi_services WHERE user_id = @user_id ORDER BY date_insertion DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
+                    string query = $"SELECT id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, insertion_in_PAEFI, general_services, type_of_service, summary_of_demand, case_of_violation, type_of_benefit, is_there_follow_up, does_the_patient_have_special_needs, interventions_performed, referrals_made, summary_description_of_the_case, user_id, entrance_door FROM Paefi_Services WHERE user_id = @user_id ORDER BY date_insertion DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
 
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
-                    {
-                        adapter.SelectCommand.Parameters.AddWithValue("@user_id", userId);
-
-
-                        connection.Open();
-                        adapter.Fill(table);
-                    }
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    adapter.SelectCommand.Parameters.AddWithValue("@user_id", userId);
+                    connection.Open();
+                    adapter.Fill(table);
                 }
             }
             catch (Exception ex)
@@ -116,7 +114,7 @@ namespace DataBase
             {
                 using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string query = $"SELECT Paefi_services.id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, Paefi_services.insertion_in_PAEFI, Paefi_services.type_of_service, Paefi_services.summary_of_demand, Paefi_services.case_of_violation, Paefi_services.type_of_benefit, Paefi_services.is_there_follow_up, Paefi_services.does_the_patient_have_special_needs, Paefi_services.interventions_performed, Paefi_services.referrals_made, Paefi_services.summary_description_of_the_case, Paefi_services.user_id, Paefi_services.entrance_door, Users.name, Users.birth, Users.address, users.number_address, Users.family_reference FROM Paefi_services  INNER JOIN Users ON Users.id = Paefi_services.user_id ORDER BY date_insertion DESC";
+                    string query = $"SELECT Paefi_Services.id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, Paefi_Services.insertion_in_PAEFI, Paefi_Services.general_services, Paefi_Services.type_of_service, Paefi_Services.summary_of_demand, Paefi_Services.case_of_violation, Paefi_Services.type_of_benefit, Paefi_Services.is_there_follow_up, Paefi_Services.does_the_patient_have_special_needs, Paefi_Services.interventions_performed, Paefi_Services.referrals_made, Paefi_Services.summary_description_of_the_case, Paefi_Services.user_id, Paefi_Services.entrance_door, Users.name, Users.birth, Users.address, users.number_address, Users.family_reference FROM Paefi_Services  INNER JOIN Users ON Users.id = Paefi_Services.user_id ORDER BY date_insertion DESC";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {
@@ -140,7 +138,7 @@ namespace DataBase
             {
                 using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string query = $"SELECT Paefi_services.id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, Paefi_services.insertion_in_PAEFI, Paefi_services.type_of_service, Paefi_services.summary_of_demand, Paefi_services.case_of_violation, Paefi_services.type_of_benefit, Paefi_services.is_there_follow_up, Paefi_services.does_the_patient_have_special_needs, Paefi_services.interventions_performed, Paefi_services.referrals_made, Paefi_services.summary_description_of_the_case, Paefi_services.user_id, Paefi_services.entrance_door, Users.name, Users.birth, Users.address, users.number_address, Users.family_reference FROM Paefi_services  INNER JOIN Users ON Users.id = Paefi_services.user_id WHERE date_insertion LIKE '%{month}%' AND date_insertion LIKE '%{year}%' ORDER BY date_insertion DESC";
+                    string query = $"SELECT Paefi_Services.id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, Paefi_Services.insertion_in_PAEFI, Paefi_Services.general_services, Paefi_Services.type_of_service, Paefi_Services.summary_of_demand, Paefi_Services.case_of_violation, Paefi_Services.type_of_benefit, Paefi_Services.is_there_follow_up, Paefi_Services.does_the_patient_have_special_needs, Paefi_Services.interventions_performed, Paefi_Services.referrals_made, Paefi_Services.summary_description_of_the_case, Paefi_Services.user_id, Paefi_Services.entrance_door, Users.name, Users.birth, Users.address, users.number_address, Users.family_reference FROM Paefi_Services  INNER JOIN Users ON Users.id = Paefi_Services.user_id WHERE date_insertion LIKE '%{month}%' AND date_insertion LIKE '%{year}%' ORDER BY date_insertion DESC";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {
@@ -163,7 +161,7 @@ namespace DataBase
             {
                 using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string query = $"SELECT Paefi_services.id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, Paefi_services.insertion_in_PAEFI, Paefi_services.type_of_service, Paefi_services.summary_of_demand, Paefi_services.case_of_violation, Paefi_services.type_of_benefit, Paefi_services.is_there_follow_up, Paefi_services.does_the_patient_have_special_needs, Paefi_services.interventions_performed, Paefi_services.referrals_made, Paefi_services.summary_description_of_the_case, Paefi_services.user_id, Paefi_services.entrance_door, Users.name, Users.birth, Users.address, users.number_address, Users.family_reference FROM Paefi_services  INNER JOIN Users ON Users.id = Paefi_services.user_id ORDER BY date_insertion DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
+                    string query = $"SELECT Paefi_Services.id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, Paefi_Services.insertion_in_PAEFI, Paefi_Services.general_services, Paefi_Services.type_of_service, Paefi_Services.summary_of_demand, Paefi_Services.case_of_violation, Paefi_Services.type_of_benefit, Paefi_Services.is_there_follow_up, Paefi_Services.does_the_patient_have_special_needs, Paefi_Services.interventions_performed, Paefi_Services.referrals_made, Paefi_Services.summary_description_of_the_case, Paefi_Services.user_id, Paefi_Services.entrance_door, Users.name, Users.birth, Users.address, users.number_address, Users.family_reference FROM Paefi_Services  INNER JOIN Users ON Users.id = Paefi_Services.user_id ORDER BY date_insertion DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {
@@ -187,7 +185,7 @@ namespace DataBase
             {
                 using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string query = $"SELECT Paefi_services.id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, Paefi_services.insertion_in_PAEFI, Paefi_services.type_of_service, Paefi_services.summary_of_demand, Paefi_services.case_of_violation, Paefi_services.type_of_benefit, Paefi_services.is_there_follow_up, Paefi_services.does_the_patient_have_special_needs, Paefi_services.interventions_performed, Paefi_services.referrals_made, Paefi_services.summary_description_of_the_case, Paefi_services.user_id, Paefi_services.entrance_door, Users.name, Users.birth, Users.address, users.number_address, Users.family_reference FROM Paefi_services  INNER JOIN Users ON Users.id = Paefi_services.user_id WHERE date_insertion LIKE '%{month}%' AND date_insertion LIKE '%{year}%' ORDER BY date_insertion DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
+                    string query = $"SELECT Paefi_Services.id, CONVERT(VARCHAR, CONVERT(date, date_insertion, 103), 103) as date_insertion, Paefi_Services.insertion_in_PAEFI, Paefi_Services.general_services, Paefi_Services.type_of_service, Paefi_Services.summary_of_demand, Paefi_Services.case_of_violation, Paefi_Services.type_of_benefit, Paefi_Services.is_there_follow_up, Paefi_Services.does_the_patient_have_special_needs, Paefi_Services.interventions_performed, Paefi_Services.referrals_made, Paefi_Services.summary_description_of_the_case, Paefi_Services.user_id, Paefi_Services.entrance_door, Users.name, Users.birth, Users.address, users.number_address, Users.family_reference FROM Paefi_Services  INNER JOIN Users ON Users.id = Paefi_Services.user_id WHERE date_insertion LIKE '%{month}%' AND date_insertion LIKE '%{year}%' ORDER BY date_insertion DESC OFFSET {page} ROWS FETCH  NEXT {quantRows} ROWS ONLY";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {
@@ -211,7 +209,7 @@ namespace DataBase
             {
                 using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string query = $"SELECT Count(case_of_violation) quantity, case_of_violation FROM Paefi_services GROUP BY case_of_violation";
+                    string query = $"SELECT Count(case_of_violation) quantity, case_of_violation FROM Paefi_Services GROUP BY case_of_violation";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {
@@ -235,7 +233,7 @@ namespace DataBase
             {
                 using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string query = $"SELECT Count(case_of_violation) quantity, case_of_violation FROM Paefi_services WHERE date_insertion LIKE '%{month}%' AND date_insertion LIKE '%{year}%' GROUP BY case_of_violation";
+                    string query = $"SELECT Count(case_of_violation) quantity, case_of_violation FROM Paefi_Services WHERE date_insertion LIKE '%{month}%' AND date_insertion LIKE '%{year}%' GROUP BY case_of_violation";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {
@@ -259,7 +257,7 @@ namespace DataBase
             {
                 using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
                 {
-                    string query = $"SELECT COUNT(type_of_service) AS quantity, FORMAT(CAST(date_insertion AS DATE), 'MMMM') AS month_insertion, type_of_service FROM Paefi_services WHERE YEAR(CAST(date_insertion AS DATE)) = {year} GROUP BY FORMAT(CAST(date_insertion AS DATE), 'MMMM'), type_of_service order by month_insertion, type_of_service;";
+                    string query = $"SELECT COUNT(general_services) AS quantity, FORMAT(CAST(date_insertion AS DATE), 'MMMM') AS month_insertion, general_services FROM Paefi_Services WHERE YEAR(CAST(date_insertion AS DATE)) = {year} GROUP BY FORMAT(CAST(date_insertion AS DATE), 'MMMM'), general_services order by month_insertion, general_services;";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {

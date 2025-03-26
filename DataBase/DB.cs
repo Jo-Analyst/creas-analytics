@@ -49,7 +49,8 @@ namespace DataBase
                 "CREATE TABLE [dbo].[Paefi_Services] (" +
                 "[Id] INT IDENTITY (1, 1) NOT NULL," +
                 "[insertion_in_PAEFI] VARCHAR (MAX) NULL," +
-                " [type_of_service] VARCHAR (MAX) NULL," +
+                "[general_services] VARCHAR (MAX) NULL," +
+                "[type_of_service] VARCHAR (MAX) NULL," +
                 "[Summary_of_demand] VARCHAR (MAX) NULL," +
                 "[case_of_violation] VARCHAR (MAX) NULL," +
                 "[type_of_benefit] VARCHAR (MAX) NULL," +

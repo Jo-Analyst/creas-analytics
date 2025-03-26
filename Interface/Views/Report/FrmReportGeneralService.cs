@@ -71,13 +71,13 @@ namespace Interface.Views
                     DataTable dtGeneralServiceByMonth = new DataTable();
                     dtGeneralServiceByMonth.Columns.Add("quantity", typeof(string));
                     dtGeneralServiceByMonth.Columns.Add("month_insertion", typeof(string));
-                    dtGeneralServiceByMonth.Columns.Add("type_of_service", typeof(string));
+                    dtGeneralServiceByMonth.Columns.Add("general_services", typeof(string));
                     GetMonthByIndex();
                     foreach (DataRow row in dtGeneralServices.Rows)
                     {
                         if (row["month_insertion"].ToString().ToLower() == monthCompleted.ToLower())
                         {
-                            dtGeneralServiceByMonth.Rows.Add(row["quantity"].ToString(), row["month_insertion"].ToString(), row["type_of_service"].ToString());
+                            dtGeneralServiceByMonth.Rows.Add(row["quantity"].ToString(), row["month_insertion"].ToString(), row["general_services"].ToString());
                         }
                     }
 
@@ -121,7 +121,7 @@ namespace Interface.Views
 
             foreach (DataRow dt in dtGeneralService.Rows)
             {
-                string typeOfService = dt["type_of_service"].ToString();
+                string typeOfService = dt["general_services"].ToString();
 
                 if (dt["month_insertion"].ToString().ToLower() == month.ToLower())
                 {

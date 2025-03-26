@@ -74,15 +74,16 @@ namespace Interface
                 paefiService.typeOfBenefit = txtTypeBenefits.Text.Trim();
                 paefiService.referralsMade = txtReferralsMade.Text.Trim();
                 paefiService.summaryOfDemand = txtSummaryOfDemand.Text.Trim();
+                paefiService.typeOfService = cbTypeService.Text.Trim();
                 paefiService.caseOfViolation = "";
                 paefiService.userId = userId;
 
                 if (rbDistance.Checked)
-                    paefiService.typeOfService = "A distância";
+                    paefiService.generalService = "A distância";
                 else if (rbHomeVisit.Checked)
-                    paefiService.typeOfService = "Visita domiciliar";
+                    paefiService.generalService = "Visita domiciliar";
                 else if (rbPresence.Checked)
-                    paefiService.typeOfService = "Presencial";
+                    paefiService.generalService = "Presencial";
 
                 paefiService.isThereFollowUp = rbYesFollowUp.Checked;
                 paefiService.doesThePatientHaveSpecialNeeds = rbYesThereIsANeed.Checked;
@@ -130,7 +131,7 @@ namespace Interface
                     dgvHistory.Rows[index].Cells[2].Value = dr["id"].ToString();
                     dgvHistory.Rows[index].Cells[3].Value = dr["date_insertion"].ToString();
                     dgvHistory.Rows[index].Cells[4].Value = dr["insertion_in_PAEFI"].ToString();
-                    dgvHistory.Rows[index].Cells[5].Value = dr["type_of_service"].ToString();
+                    dgvHistory.Rows[index].Cells[5].Value = dr["general_services"].ToString();
                     dgvHistory.Rows[index].Cells[6].Value = dr["summary_of_demand"].ToString();
                     dgvHistory.Rows[index].Cells[7].Value = dr["entrance_door"].ToString();
                     dgvHistory.Rows[index].Cells[8].Value = dr["type_of_benefit"].ToString();
@@ -139,7 +140,8 @@ namespace Interface
                     dgvHistory.Rows[index].Cells[11].Value = dr["does_the_patient_have_special_needs"].ToString() == "1" ? "Sim" : "Não";
                     dgvHistory.Rows[index].Cells[12].Value = dr["interventions_performed"].ToString();
                     dgvHistory.Rows[index].Cells[13].Value = dr["referrals_made"].ToString();
-                    dgvHistory.Rows[index].Cells[14].Value = dr["summary_description_of_the_case"].ToString();
+                    dgvHistory.Rows[index].Cells[14].Value = dr["summary_description_of_the_case"].ToString(); 
+                    dgvHistory.Rows[index].Cells[15].Value = dr["type_of_service"].ToString();
 
 
                     dgvHistory.Rows[index].Selected = false;
@@ -185,6 +187,7 @@ namespace Interface
                 txtSummaryOfDemand.Text = dgvHistory.CurrentRow.Cells[6].Value.ToString();
                 cbEntranceDoor.Text = dgvHistory.CurrentRow.Cells[7].Value.ToString();
                 txtTypeBenefits.Text = dgvHistory.CurrentRow.Cells[8].Value.ToString();
+                cbTypeService.Text = dgvHistory.CurrentRow.Cells[15].Value.ToString();
 
                 var caseOfViolation = dgvHistory.CurrentRow.Cells[9].Value.ToString().Split(';');
 
@@ -387,6 +390,7 @@ namespace Interface
         {
             txtDescription.Clear();
             cbEntranceDoor.SelectedIndex = -1;
+            cbTypeService.SelectedIndex = -1;
             txtInsertionInPaefi.Clear();
             txtInterventionsPerformed.Clear();
             txtReferralsMade.Clear();
