@@ -35,6 +35,9 @@
             this.menuUser = new System.Windows.Forms.ToolStripMenuItem();
             this.menuReport = new System.Windows.Forms.ToolStripMenuItem();
             this.atendimentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoDeAtendimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.violaçõesDeDireitoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.portaDeEntradaDosUsuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSetting = new System.Windows.Forms.ToolStripMenuItem();
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,9 +45,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tipoDeAtendimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.violaçõesDeDireitoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.portaDeEntradaDosUsuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -108,6 +108,41 @@
             this.atendimentosToolStripMenuItem.Text = "Atendimentos Gerais";
             this.atendimentosToolStripMenuItem.ToolTipText = "Gerar Relatório";
             this.atendimentosToolStripMenuItem.Click += new System.EventHandler(this.ServiceToolStripMenuItem_Click);
+            // 
+            // tipoDeAtendimentoToolStripMenuItem
+            // 
+            this.tipoDeAtendimentoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
+            this.tipoDeAtendimentoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.tipoDeAtendimentoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tipoDeAtendimentoToolStripMenuItem.Image")));
+            this.tipoDeAtendimentoToolStripMenuItem.Name = "tipoDeAtendimentoToolStripMenuItem";
+            this.tipoDeAtendimentoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.T)));
+            this.tipoDeAtendimentoToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
+            this.tipoDeAtendimentoToolStripMenuItem.Text = "Tipo de Atendimento";
+            this.tipoDeAtendimentoToolStripMenuItem.Click += new System.EventHandler(this.tipoDeAtendimentoToolStripMenuItem_Click);
+            // 
+            // violaçõesDeDireitoToolStripMenuItem
+            // 
+            this.violaçõesDeDireitoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
+            this.violaçõesDeDireitoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.violaçõesDeDireitoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("violaçõesDeDireitoToolStripMenuItem.Image")));
+            this.violaçõesDeDireitoToolStripMenuItem.Name = "violaçõesDeDireitoToolStripMenuItem";
+            this.violaçõesDeDireitoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.V)));
+            this.violaçõesDeDireitoToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
+            this.violaçõesDeDireitoToolStripMenuItem.Text = "Violações de direitos";
+            this.violaçõesDeDireitoToolStripMenuItem.Click += new System.EventHandler(this.violaçõesDeDireitoToolStripMenuItem_Click);
+            // 
+            // portaDeEntradaDosUsuárioToolStripMenuItem
+            // 
+            this.portaDeEntradaDosUsuárioToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
+            this.portaDeEntradaDosUsuárioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.portaDeEntradaDosUsuárioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("portaDeEntradaDosUsuárioToolStripMenuItem.Image")));
+            this.portaDeEntradaDosUsuárioToolStripMenuItem.Name = "portaDeEntradaDosUsuárioToolStripMenuItem";
+            this.portaDeEntradaDosUsuárioToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.P)));
+            this.portaDeEntradaDosUsuárioToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
+            this.portaDeEntradaDosUsuárioToolStripMenuItem.Text = "Porta de entrada dos usuário";
             // 
             // serviçoToolStripMenuItem
             // 
@@ -179,40 +214,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // tipoDeAtendimentoToolStripMenuItem
-            // 
-            this.tipoDeAtendimentoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
-            this.tipoDeAtendimentoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.tipoDeAtendimentoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("tipoDeAtendimentoToolStripMenuItem.Image")));
-            this.tipoDeAtendimentoToolStripMenuItem.Name = "tipoDeAtendimentoToolStripMenuItem";
-            this.tipoDeAtendimentoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.T)));
-            this.tipoDeAtendimentoToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
-            this.tipoDeAtendimentoToolStripMenuItem.Text = "Tipo de Atendimento";
-            // 
-            // violaçõesDeDireitoToolStripMenuItem
-            // 
-            this.violaçõesDeDireitoToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
-            this.violaçõesDeDireitoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.violaçõesDeDireitoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("violaçõesDeDireitoToolStripMenuItem.Image")));
-            this.violaçõesDeDireitoToolStripMenuItem.Name = "violaçõesDeDireitoToolStripMenuItem";
-            this.violaçõesDeDireitoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.V)));
-            this.violaçõesDeDireitoToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
-            this.violaçõesDeDireitoToolStripMenuItem.Text = "Violações de direitos";
-            this.violaçõesDeDireitoToolStripMenuItem.Click += new System.EventHandler(this.violaçõesDeDireitoToolStripMenuItem_Click);
-            // 
-            // portaDeEntradaDosUsuárioToolStripMenuItem
-            // 
-            this.portaDeEntradaDosUsuárioToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
-            this.portaDeEntradaDosUsuárioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.portaDeEntradaDosUsuárioToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("portaDeEntradaDosUsuárioToolStripMenuItem.Image")));
-            this.portaDeEntradaDosUsuárioToolStripMenuItem.Name = "portaDeEntradaDosUsuárioToolStripMenuItem";
-            this.portaDeEntradaDosUsuárioToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.P)));
-            this.portaDeEntradaDosUsuárioToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
-            this.portaDeEntradaDosUsuárioToolStripMenuItem.Text = "Porta de entrada dos usuário";
             // 
             // FrmCreasAnalystics
             // 

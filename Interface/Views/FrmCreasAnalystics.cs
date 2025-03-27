@@ -37,5 +37,10 @@ namespace Interface
         {
 
         }
+
+        private void tipoDeAtendimentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmReportTypeService().ShowDialog();
+        }
     }
 }
