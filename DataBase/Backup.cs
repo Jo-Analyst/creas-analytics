@@ -4,7 +4,7 @@ namespace DataBase
 {
     public class Backup
     {
-        public void GenerateBackup(string path)
+        static public void GenerateBackup(string path)
         {
             using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionStringMaster))
             {
@@ -23,7 +23,7 @@ namespace DataBase
             }
         }
 
-        public void RestoreDataBase(string path)
+        static public void RestoreDataBase(string path)
         {
             using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionStringMaster))
             {

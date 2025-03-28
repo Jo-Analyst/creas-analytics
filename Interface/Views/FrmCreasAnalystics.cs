@@ -42,5 +42,10 @@ namespace Interface
         {
             new FrmReportTypeService().ShowDialog();
         }
+
+        private void FrmCreasAnalystics_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

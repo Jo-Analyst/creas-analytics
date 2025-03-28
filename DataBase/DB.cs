@@ -43,8 +43,7 @@ namespace DataBase
                 "[phone] VARCHAR(20) NULL," +
                 "[address] VARCHAR(200) NULL," +
                 "[number_address] VARCHAR(MAX) NULL," +
-                "[phone] VARCHAR(20) NULL)," +
-                "[family_reference] VARCHAR(200) NULL;" +
+                "[family_reference] VARCHAR(200) NULL);" +
                 "" +
                 "CREATE TABLE [dbo].[Paefi_Services] (" +
                 "[Id] INT IDENTITY (1, 1) NOT NULL," +
@@ -63,7 +62,7 @@ namespace DataBase
                 "[user_id] INT NOT NULL," +
                 "[date_insertion] VARCHAR (MAX) NULL," +
                 "PRIMARY KEY CLUSTERED ([Id] ASC)," +
-                "FOREIGN KEY ([user_id]) REFERENCES [dbo].[Users] ([id]) ON DELETE CASCADE\r\n);";
+                "FOREIGN KEY ([user_id]) REFERENCES [dbo].[Users] ([id]) ON DELETE CASCADE);";
 
                 SqlCommand command = new SqlCommand(sql, connection);
                 command.CommandText = sql;

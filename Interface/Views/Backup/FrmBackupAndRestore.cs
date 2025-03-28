@@ -37,8 +37,6 @@ namespace Interface
             return $"{day.ToString().PadLeft(2, '0')}-{month.ToString().PadLeft(2, '0')}-{year}---{hour.ToString().PadLeft(2, '0')}-{minute.ToString().PadLeft(2, '0')}-{second.ToString().PadLeft(2, '0')}";
         }
 
-        Backup backup = new Backup();
-
         private void btnBackup_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(path))
@@ -51,7 +49,7 @@ namespace Interface
             {
                 CreateDirectory();
                 string file = $"{path}\\CREAS-Analytics-backup---{getDate()}.bak";
-                backup.GenerateBackup(file);
+                Backup.GenerateBackup(file);
                 MessageBox.Show($"Backup realizado com sucesso. O caminho do arquivo é este: {file}.", "Mensagem", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -69,7 +67,7 @@ namespace Interface
                 openFileDialog.Title = "Abrir arquivo de restauração";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    backup.RestoreDataBase(openFileDialog.FileName);
+                    Backup.RestoreDataBase(openFileDialog.FileName);
                     MessageBox.Show("Restauração realizado com sucesso.", "Mensage,", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
