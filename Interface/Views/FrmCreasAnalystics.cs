@@ -47,5 +47,10 @@ namespace Interface
         {
             Application.Exit();
         }
+
+        private void portaDeEntradaDosUsuárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmEntranceDoor().ShowDialog();
+        }
     }
 }

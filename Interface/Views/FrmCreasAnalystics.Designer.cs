@@ -143,6 +143,7 @@
             | System.Windows.Forms.Keys.P)));
             this.portaDeEntradaDosUsuárioToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
             this.portaDeEntradaDosUsuárioToolStripMenuItem.Text = "Porta de entrada dos usuário";
+            this.portaDeEntradaDosUsuárioToolStripMenuItem.Click += new System.EventHandler(this.portaDeEntradaDosUsuárioToolStripMenuItem_Click);
             // 
             // serviçoToolStripMenuItem
             // 

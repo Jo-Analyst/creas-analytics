@@ -38,9 +38,9 @@
             // 
             // pbLoading
             // 
-            this.pbLoading.Location = new System.Drawing.Point(56, 89);
+            this.pbLoading.Location = new System.Drawing.Point(53, 89);
             this.pbLoading.Name = "pbLoading";
-            this.pbLoading.Size = new System.Drawing.Size(324, 23);
+            this.pbLoading.Size = new System.Drawing.Size(324, 39);
             this.pbLoading.TabIndex = 0;
             // 
             // label1
@@ -48,7 +48,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(173, 124);
+            this.label1.Location = new System.Drawing.Point(163, 142);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 20);
             this.label1.TabIndex = 1;

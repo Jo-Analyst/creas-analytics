@@ -274,7 +274,7 @@ namespace DataBase
             return table;
         }
 
-          static public DataTable GetQuantityServiceByType(int year)
+        static public DataTable GetQuantityServiceByType(int year)
         {
             DataTable table = new DataTable();
             try
@@ -282,6 +282,30 @@ namespace DataBase
                 using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
                 {
                     string query = $"SELECT COUNT(type_of_service) AS quantity, FORMAT(CAST(date_insertion AS DATE), 'MMMM') AS month_insertion, type_of_service FROM Paefi_Services WHERE YEAR(CAST(date_insertion AS DATE)) = {year} GROUP BY FORMAT(CAST(date_insertion AS DATE), 'MMMM'), type_of_service order by month_insertion, type_of_service;";
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                    {
+                        connection.Open();
+                        adapter.Fill(table);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return table;
+        }
+        
+        static public DataTable GetQuantityEntranceDoor(int year)
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(DbConnectionString.connectionString))
+                {
+                    string query = $"SELECT COUNT(entrance_door) AS quantity, FORMAT(CAST(date_insertion AS DATE), 'MMMM') AS month_insertion, entrance_door FROM Paefi_Services WHERE YEAR(CAST(date_insertion AS DATE)) = {year} GROUP BY FORMAT(CAST(date_insertion AS DATE), 'MMMM'), entrance_door order by month_insertion, entrance_door;";
 
                     using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
                     {

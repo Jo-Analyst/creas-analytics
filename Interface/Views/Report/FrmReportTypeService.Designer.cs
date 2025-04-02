@@ -32,10 +32,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportTypeService));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportTypeService));
             this.dgvReport = new System.Windows.Forms.DataGridView();
+            this.ColMonths = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColInitialWelcome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColVirtualAssistance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColInsertionOfUserInPAEFI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColHomeVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColOuter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbYear = new System.Windows.Forms.ComboBox();
@@ -43,12 +49,6 @@
             this.cbMonth = new System.Windows.Forms.ComboBox();
             this.btnGenerateChart = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.ColMonths = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColInitialWelcome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColVirtualAssistance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColInsertionOfUserInPAEFI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColHomeVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColOuter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -108,6 +108,69 @@
             this.dgvReport.Size = new System.Drawing.Size(701, 366);
             this.dgvReport.TabIndex = 1;
             this.dgvReport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReport_CellClick);
+            // 
+            // ColMonths
+            // 
+            this.ColMonths.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.ColMonths.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColMonths.HeaderText = "";
+            this.ColMonths.MinimumWidth = 6;
+            this.ColMonths.Name = "ColMonths";
+            this.ColMonths.ReadOnly = true;
+            this.ColMonths.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColMonths.Width = 6;
+            // 
+            // ColInitialWelcome
+            // 
+            this.ColInitialWelcome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColInitialWelcome.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColInitialWelcome.HeaderText = "Acolhida inicial";
+            this.ColInitialWelcome.MinimumWidth = 6;
+            this.ColInitialWelcome.Name = "ColInitialWelcome";
+            this.ColInitialWelcome.ReadOnly = true;
+            this.ColInitialWelcome.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColInitialWelcome.Width = 104;
+            // 
+            // ColVirtualAssistance
+            // 
+            this.ColVirtualAssistance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColVirtualAssistance.HeaderText = "Atividades do PAEFI";
+            this.ColVirtualAssistance.MinimumWidth = 6;
+            this.ColVirtualAssistance.Name = "ColVirtualAssistance";
+            this.ColVirtualAssistance.ReadOnly = true;
+            this.ColVirtualAssistance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColVirtualAssistance.Width = 140;
+            // 
+            // ColInsertionOfUserInPAEFI
+            // 
+            this.ColInsertionOfUserInPAEFI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColInsertionOfUserInPAEFI.HeaderText = "Inserção de usuário no PAEFI";
+            this.ColInsertionOfUserInPAEFI.MinimumWidth = 6;
+            this.ColInsertionOfUserInPAEFI.Name = "ColInsertionOfUserInPAEFI";
+            this.ColInsertionOfUserInPAEFI.ReadOnly = true;
+            this.ColInsertionOfUserInPAEFI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColInsertionOfUserInPAEFI.Width = 213;
+            // 
+            // ColHomeVisit
+            // 
+            this.ColHomeVisit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColHomeVisit.HeaderText = "Visita domiciliar";
+            this.ColHomeVisit.Name = "ColHomeVisit";
+            this.ColHomeVisit.ReadOnly = true;
+            this.ColHomeVisit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColHomeVisit.Width = 108;
+            // 
+            // ColOuter
+            // 
+            this.ColOuter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColOuter.HeaderText = "Outro";
+            this.ColOuter.Name = "ColOuter";
+            this.ColOuter.ReadOnly = true;
+            this.ColOuter.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColOuter.Width = 47;
             // 
             // groupBox1
             // 
@@ -207,69 +270,6 @@
             this.btnGenerateChart.UseVisualStyleBackColor = true;
             this.btnGenerateChart.Click += new System.EventHandler(this.btnGenerateChart_Click);
             // 
-            // ColMonths
-            // 
-            this.ColMonths.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.ColMonths.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColMonths.HeaderText = "";
-            this.ColMonths.MinimumWidth = 6;
-            this.ColMonths.Name = "ColMonths";
-            this.ColMonths.ReadOnly = true;
-            this.ColMonths.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColMonths.Width = 6;
-            // 
-            // ColInitialWelcome
-            // 
-            this.ColInitialWelcome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColInitialWelcome.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColInitialWelcome.HeaderText = "Acolhida inicial";
-            this.ColInitialWelcome.MinimumWidth = 6;
-            this.ColInitialWelcome.Name = "ColInitialWelcome";
-            this.ColInitialWelcome.ReadOnly = true;
-            this.ColInitialWelcome.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColInitialWelcome.Width = 104;
-            // 
-            // ColVirtualAssistance
-            // 
-            this.ColVirtualAssistance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColVirtualAssistance.HeaderText = "Atividades do PAEFI";
-            this.ColVirtualAssistance.MinimumWidth = 6;
-            this.ColVirtualAssistance.Name = "ColVirtualAssistance";
-            this.ColVirtualAssistance.ReadOnly = true;
-            this.ColVirtualAssistance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColVirtualAssistance.Width = 140;
-            // 
-            // ColInsertionOfUserInPAEFI
-            // 
-            this.ColInsertionOfUserInPAEFI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColInsertionOfUserInPAEFI.HeaderText = "Inserção de usuário no PAEFI";
-            this.ColInsertionOfUserInPAEFI.MinimumWidth = 6;
-            this.ColInsertionOfUserInPAEFI.Name = "ColInsertionOfUserInPAEFI";
-            this.ColInsertionOfUserInPAEFI.ReadOnly = true;
-            this.ColInsertionOfUserInPAEFI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ColInsertionOfUserInPAEFI.Width = 213;
-            // 
-            // ColHomeVisit
-            // 
-            this.ColHomeVisit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColHomeVisit.HeaderText = "Visita domiciliar";
-            this.ColHomeVisit.Name = "ColHomeVisit";
-            this.ColHomeVisit.ReadOnly = true;
-            this.ColHomeVisit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColHomeVisit.Width = 108;
-            // 
-            // ColOuter
-            // 
-            this.ColOuter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColOuter.HeaderText = "Outro";
-            this.ColOuter.Name = "ColOuter";
-            this.ColOuter.ReadOnly = true;
-            this.ColOuter.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColOuter.Width = 47;
-            // 
             // FrmReportTypeService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -288,7 +288,7 @@
             this.MinimumSize = new System.Drawing.Size(747, 571);
             this.Name = "FrmReportTypeService";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Relatório dos atendimentos";
+            this.Text = "Tipos de atendimento";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmReportService_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmReportService_KeyDown);

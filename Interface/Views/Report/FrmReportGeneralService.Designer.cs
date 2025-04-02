@@ -32,9 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportGeneralService));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportGeneralService));
             this.dgvReport = new System.Windows.Forms.DataGridView();
+            this.ColMonths = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColInPersonAssistanceToUsers = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColVirtualAssistance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColHomeVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbYear = new System.Windows.Forms.ComboBox();
@@ -42,10 +46,6 @@
             this.cbMonth = new System.Windows.Forms.ComboBox();
             this.btnGenerateChart = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.ColMonths = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColInPersonAssistanceToUsers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColVirtualAssistance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColHomeVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReport)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -104,6 +104,49 @@
             this.dgvReport.TabIndex = 1;
             this.dgvReport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReport_CellClick);
             // 
+            // ColMonths
+            // 
+            this.ColMonths.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.ColMonths.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColMonths.HeaderText = "";
+            this.ColMonths.MinimumWidth = 6;
+            this.ColMonths.Name = "ColMonths";
+            this.ColMonths.ReadOnly = true;
+            this.ColMonths.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColMonths.Width = 6;
+            // 
+            // ColInPersonAssistanceToUsers
+            // 
+            this.ColInPersonAssistanceToUsers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColInPersonAssistanceToUsers.HeaderText = "Atendimentos Presenciais a usuários";
+            this.ColInPersonAssistanceToUsers.MinimumWidth = 6;
+            this.ColInPersonAssistanceToUsers.Name = "ColInPersonAssistanceToUsers";
+            this.ColInPersonAssistanceToUsers.ReadOnly = true;
+            this.ColInPersonAssistanceToUsers.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColInPersonAssistanceToUsers.Width = 236;
+            // 
+            // ColVirtualAssistance
+            // 
+            this.ColVirtualAssistance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColVirtualAssistance.HeaderText = "Atendimentos Virtuais (Telefone ou Video) a USUÁRIOS";
+            this.ColVirtualAssistance.MinimumWidth = 6;
+            this.ColVirtualAssistance.Name = "ColVirtualAssistance";
+            this.ColVirtualAssistance.ReadOnly = true;
+            this.ColVirtualAssistance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColVirtualAssistance.Width = 349;
+            // 
+            // ColHomeVisit
+            // 
+            this.ColHomeVisit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ColHomeVisit.HeaderText = "Visita domiciliar";
+            this.ColHomeVisit.MinimumWidth = 6;
+            this.ColHomeVisit.Name = "ColHomeVisit";
+            this.ColHomeVisit.ReadOnly = true;
+            this.ColHomeVisit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.ColHomeVisit.Width = 127;
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -126,7 +169,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 24);
+            this.label2.Size = new System.Drawing.Size(33, 20);
             this.label2.TabIndex = 20;
             this.label2.Text = "Ano";
             // 
@@ -139,7 +182,7 @@
             this.cbYear.FormattingEnabled = true;
             this.cbYear.Location = new System.Drawing.Point(51, 31);
             this.cbYear.Name = "cbYear";
-            this.cbYear.Size = new System.Drawing.Size(94, 32);
+            this.cbYear.Size = new System.Drawing.Size(94, 28);
             this.cbYear.TabIndex = 19;
             this.cbYear.TabStop = false;
             this.cbYear.SelectedIndexChanged += new System.EventHandler(this.cbYear_SelectedIndexChanged);
@@ -149,7 +192,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(151, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 24);
+            this.label1.Size = new System.Drawing.Size(35, 20);
             this.label1.TabIndex = 18;
             this.label1.Text = "Mês";
             // 
@@ -176,7 +219,7 @@
             "DEZ"});
             this.cbMonth.Location = new System.Drawing.Point(192, 28);
             this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(118, 32);
+            this.cbMonth.Size = new System.Drawing.Size(118, 28);
             this.cbMonth.TabIndex = 17;
             this.cbMonth.TabStop = false;
             this.cbMonth.SelectedIndexChanged += new System.EventHandler(this.cbMonth_SelectedIndexChanged);
@@ -202,55 +245,12 @@
             this.btnGenerateChart.UseVisualStyleBackColor = true;
             this.btnGenerateChart.Click += new System.EventHandler(this.btnGenerateChart_Click);
             // 
-            // ColMonths
+            // FrmReportGeneralService
             // 
-            this.ColMonths.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.ColMonths.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColMonths.HeaderText = "";
-            this.ColMonths.MinimumWidth = 6;
-            this.ColMonths.Name = "ColMonths";
-            this.ColMonths.ReadOnly = true;
-            this.ColMonths.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColMonths.Width = 6;
-            // 
-            // ColInPersonAssistanceToUsers
-            // 
-            this.ColInPersonAssistanceToUsers.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColInPersonAssistanceToUsers.HeaderText = "Atendimentos Presenciais a usuários";
-            this.ColInPersonAssistanceToUsers.MinimumWidth = 6;
-            this.ColInPersonAssistanceToUsers.Name = "ColInPersonAssistanceToUsers";
-            this.ColInPersonAssistanceToUsers.ReadOnly = true;
-            this.ColInPersonAssistanceToUsers.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColInPersonAssistanceToUsers.Width = 283;
-            // 
-            // ColVirtualAssistance
-            // 
-            this.ColVirtualAssistance.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColVirtualAssistance.HeaderText = "Atendimentos Virtuais (Telefone ou Video) a USUÁRIOS";
-            this.ColVirtualAssistance.MinimumWidth = 6;
-            this.ColVirtualAssistance.Name = "ColVirtualAssistance";
-            this.ColVirtualAssistance.ReadOnly = true;
-            this.ColVirtualAssistance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColVirtualAssistance.Width = 428;
-            // 
-            // ColHomeVisit
-            // 
-            this.ColHomeVisit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ColHomeVisit.HeaderText = "Visita domiciliar";
-            this.ColHomeVisit.MinimumWidth = 6;
-            this.ColHomeVisit.Name = "ColHomeVisit";
-            this.ColHomeVisit.ReadOnly = true;
-            this.ColHomeVisit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.ColHomeVisit.Width = 150;
-            // 
-            // FrmReportGeneralServiceCopy
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
-            this.ClientSize = new System.Drawing.Size(729, 524);
+            this.ClientSize = new System.Drawing.Size(731, 532);
             this.Controls.Add(this.btnGenerateChart);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvReport);
@@ -261,9 +261,9 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(747, 571);
-            this.Name = "FrmReportGeneralServiceCopy";
+            this.Name = "FrmReportGeneralService";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Relatório dos atendimentos";
+            this.Text = "Atendimento Geral";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmReportService_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmReportService_KeyDown);
